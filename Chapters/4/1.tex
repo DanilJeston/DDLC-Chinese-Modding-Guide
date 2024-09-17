@@ -22,7 +22,7 @@ define <变量名> = DynamicCharacter('<存储角色名的变量名>', image='<s
 \end{lstlisting}
 
 \begin{Warning}
-    对于say语句的对话属性来说，如果image后的图像名错误，那么将会导致其无法使用。所以请务必确保image后的图像名与您定义的角色立绘名一致。对于角色立绘名，请参考\ref{par:3.2.1}
+    对于say语句的对话属性来说，如果image后的图像名错误，那么将会导致其无法使用。所以请务必确保image后的图像名与您定义的角色立绘名一致。对于角色立绘名，请参考\ref{para:3.2.2.1}
 \end{Warning}
 
 \begin{ExtraKnowledge}
@@ -33,9 +33,9 @@ define <变量名> = DynamicCharacter('<存储角色名的变量名>', image='<s
 m "你好"
     \end{lstlisting}
 
-    那么在游戏中的效果为："你好"。如果我们想要修改为：【你好】，那么只需要找到莫妮卡角色的定义，并将what\_prefix改为'【', what\_suffix改为'】'即可实现。实际代码如下：
+    那么在游戏中的效果为："你好"。如果我们想要修改为：「你好」，那么只需要找到莫妮卡角色的定义，并将what\_prefix改为'「', what\_suffix改为'」'即可实现。实际代码如下：
     \begin{lstlisting}
-define m = DynamicCharacter('m_name', image='monika', what_prefix='【', what_suffix='】', ctc='ctc', ctc_position='fixed')
+define m = DynamicCharacter('m_name', image='monika', what_prefix='「', what_suffix='」', ctc='ctc', ctc_position='fixed')
     \end{lstlisting}
 \end{ExtraKnowledge}
 
@@ -79,10 +79,9 @@ define c = DynamicCharacter('c_name', image='charlie', what_prefix='"', what_suf
 现在，在mod\_assets文件夹下创造一个名为images的文件夹。在后续的教程中，我们将会把所有的图片资源都存储在这个images文件夹内。
 
 \begin{Warning}
-图像资源的格式应该为PNG，且背景应该是透明的。
-角色图像资源的分辨率应为 960x960 以保证兼容性。
-背景图像的分辨率应该为 1280x720，否则图片在显示时会出现意料之外的状况。如果背景图片的分辨率超过上述分辨率，至少您的图片也应该为 16:9 的尺寸，这种情况下可以使用增添size属性解决问题：
-
+请注意，对于所有图片，其格式都应为PNG，且背景应该是透明的。
+角色立绘资源的分辨率应为960x960以保证兼容性，且对于一个完整的立绘应遵循原版DDLC的原则分成三个图像：头部、左半身、右半身。角色立绘编号不能和已有的重复。
+背景图像的尺寸应为16:9，分辨率应该为1280x720。如果图像资源分辨率扩大，您可以使用软件降低图像分辨率或使用size属性解决：
 \begin{lstlisting}
 size (1280,720) # 添加 size 属性
 \end{lstlisting}
@@ -90,6 +89,73 @@ size (1280,720) # 添加 size 属性
 为了兼容性，我们建议您新建的所有文件（夹）名称全部为英文小写字母，且不使用中文。
 \end{Warning}
 
-\subsubsection{角色图片}
+\subsubsection{角色立绘}
 
-在获取角色资源图片后，
+在获取角色立绘后，在images文件夹下创建一个文件夹，名为您想要添加立绘的角色名，如sayori。将图像放进您刚才创建的文件夹内，同时我们建议您将图像名改为26个小写字母或0-9数字中的任意一个（建议从a开始到z依次排列并遵循\ref{para:3.2.2.1}中的定义）。
+
+增添图像后，接下来我们就该定义角色立绘了。定义图像的语法如下：
+
+\begin{lstlisting}
+image <图像名> = "<资源地址>"
+\end{lstlisting}
+
+但由于DDLC将角色立绘拆分成为了三部分（请参考\ref{para:3.2.2.1}），故对于角色立绘的定义会非常的复杂。
+
+您可以按照以下步骤判断选取相应的代码进行修改：
+\begin{enumerate}
+    \item 您添加的立绘是DDLC原有角色：
+    \begin{enumerate}
+        \item 您只添加了表情：
+        \begin{lstlisting}[numbers=none]
+image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "<角色名>/<数字>l.png", (0, 0), "<角色名>/<数字>r.png", (0, 0), "mod_assets/images/<角色名>/<图像资源>.png") 
+        \end{lstlisting}
+
+        \item 您只添加了身体姿势:
+        \begin{lstlisting}[numbers=none]
+image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "<角色名>/<字母>l.png") 
+        \end{lstlisting}
+
+        \item 您同时添加了表情与身体姿势:
+        \begin{lstlisting}[numbers=none]
+image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<图像资源>.png") 
+        \end{lstlisting}
+    \end{enumerate}
+
+    \item 您添加的立绘是新定义的的角色：
+    \begin{lstlisting}[numbers=none]
+image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<图像资源>.png") 
+    \end{lstlisting}
+\end{enumerate}
+
+对于角色立绘的列举，您可以前往 \url{https://docs.dokimod.top/pages/0a59cf/} 查看。
+
+\subsubsection{背景图像}
+在获取背景图像后，在images文件夹下创建一个名为bg文件夹。将背景放进您刚才创建的文件夹内，同时我们建议您将图像名改为小写的单词。
+
+增添背景后，接下来我们就该定义背景了。定义背景的语法如下：
+
+\begin{lstlisting}
+image bg <背景名> = "mod_assets/images/bg/<背景图像资源名>.png"
+\end{lstlisting}
+
+\begin{Example}
+image bg school = "mod\_assets/images/bg/school.png"
+\end{Example}
+
+\subsection{音频资源}
+现在，在mod\_assets文件夹下创造一个名为audio的文件夹。将音频放进您刚才创建的文件夹内，同时我们建议您将音频名改为小写的单词。
+
+\begin{Warning}
+    Ren'Py 只支持以下几种音频格式：
+    \begin{itemize}
+        \item Opus
+        \item Ogg
+        \item MP3
+        \item WAV
+    \end{itemize}
+\end{Warning}
+
+然后，打开definitions.rpy文件，新增以下代码：
+\begin{lstlisting}
+define audio.<音频名> = "mod_assets/audio/<音频名>.<后缀名>"
+\end{lstlisting}

@@ -1,5 +1,5 @@
 \section{在Ren'Py中使用Python语句}
-\label{sec:3.2}
+\label{sec:4.3}
 在Ren'Py中有多种方式可以使用Python语句：Python语句块（block）、单行Python语句、init python语句。
 
 \subsection{Python语句块}
@@ -90,7 +90,7 @@ init python语句在Ren'Py初始化阶段运行，会早于其他代码。这种
 \end{ExtraKnowledge}
 
 \begin{Attention}
-    为了避免与Ren'Py自身代码冲突，您只应使用-999到999范围内作为优先级。同时，原则上除特殊代码外，其他代码优先级应全部大于等于0。
+    为了避免与Ren'Py自身代码冲突，您只应使用-999到999范围内作为优先级。同时，原则上除特殊代码外，init优先级应全部大于等于0。
 \end{Attention}
 
 init python语句也可以使用hide或in分句，与普通python语句用法相同。
@@ -140,6 +140,6 @@ label ch0_start:
 \end{lstlisting}
 
 \begin{ExtraKnowledge}
-    Python语句块还可以使用early分句。在Ren'Py的运行生命周期中，python early是被最早运行的。python early中的代码将会早于所有代码运行，因此，python early语句适合用来修改Ren'Py底层处理机制。但由于修改底层处理代码可能会导致一系列问题，我们不会在这里展开讲解。有兴趣者可以前往\url{https://doc.renpy.cn/zh-CN/lifecycle.html}了解python early语句的使用。
+    Python语句块还可以使用early分句。在Ren'Py的运行生命周期中，python early是被最早运行的。python early中的代码将会早于所有代码运行，因此，python early语句适合用来修改Ren'Py底层处理机制。但由于修改底层处理代码可能会导致一系列问题，我们不会在这里展开讲解。有兴趣者可以前往 \url{https://doc.renpy.cn/zh-CN/lifecycle.html} 了解python early语句的使用。
 \end{ExtraKnowledge}
 

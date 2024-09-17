@@ -1,6 +1,6 @@
 \section{进入Ren'Py世界}
 在Ren'Py的世界里，剧本与视觉内容都围绕着代码展开。要编写脚本，我们就必须先学习Ren'Py的语法。
-\subsection{say语句}\label{subsec:2.2.1}
+\subsection{say语句}\label{subsec:3.2.1}
 say语句是一个十分重要的语法，它可以让视觉小说角色拥有对话的能力。不过不用担心，say
 语句的语法十分简单。
 
@@ -125,12 +125,12 @@ player是一个记录了玩家名字的变量。不理解变量是什么？没�
         \hline
     \end{supertabular}
     \captionof{table}{常用文本处理标签}
-    \label{table:3.1.3}
+    \label{table:3.2.1}
 \end{center}
 
 \subsection{show、hide、scene语句}
 
-在\ref{subsec:2.2.1}课中，我们学习了如何在视觉小说中编写对话。但现在有一个很大的问题⸺没有图像。在视觉小说中，视觉便是重点。在本课中，我们将学习如何在视角小说中显示图像。
+在\ref{subsec:3.2.1}课中，我们学习了如何在视觉小说中编写对话。但现在有一个很大的问题⸺没有图像。在视觉小说中，视觉便是重点。在本课中，我们将学习如何在视角小说中显示图像。
 
 \subsubsection{show语句}
 
@@ -169,7 +169,7 @@ show <图片名称> <附加参数>
     \item 毛刺(Glitch)立绘
 \end{itemize}
 
-\paragraph{角色立绘}\label{par:3.2.1}
+\paragraph{角色立绘}\label{para:3.2.2.1}
 
 对于角色立绘，图片名称的组成为:
 \begin{lstlisting}[numbers=none]
@@ -184,7 +184,7 @@ DDLC原版中，一个显示在屏幕上的角色立绘可以分为两个部分�
 
 同时，除莫妮卡外的所有角色都可以使用日常服，只需要在身体姿势后加上b即可使用日常服。如：1b
 
-对于角色立绘的列举，您可以前往\url{https://docs.dokimod.top/pages/0a59cf/}查看。
+对于角色立绘的列举，您可以前往 \url{https://docs.dokimod.top/pages/0a59cf/} 查看。
 
 \paragraph{毛刺立绘}
 
@@ -212,7 +212,7 @@ bg <背景编号>
 背景编号即意义可以在definitions.rpy文件中找到。这里不再进行过多叙述。
 
 \begin{ExtraKnowledge}
-通常我们不使用show来显示背景，而是使用scene。对于scene的详细介绍请看第\ref{subsubsec:2.2.2.3}课。
+通常我们不使用show来显示背景，而是使用scene。对于scene的详细介绍请看第\ref{subsubsec:3.2.2.3}课。
 \end{ExtraKnowledge}
 
 \paragraph{附加参数}
@@ -239,11 +239,11 @@ bg <背景编号>
 \end{center}
 
 \begin{ExtraKnowledge}
-show语句也可以使用behind 从句、as从句、onlayer从句。但由于在游戏中这些从句很少会使用,故不再展开讲解。有兴趣者可前往\url{https://doc.renpy.cn/zh-CN/displaying_images.htm}了解详细内容。
+show语句也可以使用behind 从句、as从句、onlayer从句。但由于在游戏中这些从句很少会使用,故不再展开讲解。有兴趣者可前往 \url{https://doc.renpy.cn/zh-CN/displaying_images.htm} 了解详细内容。
 \end{ExtraKnowledge}
 
 \subparagraph{at、with从句}
-\label{subsubsec:2.2.2.1}
+\label{subsubsec:3.2.2.1}
 当变换作为角色变化时，应使用at从句。一个关于变换的例子：t41。在这个变换中，t表示在这个位置上的角色静止站立在原地；4表示一共有4个站位，会将屏幕等分成4份；1表示从左往右该变换是所有站位中的第1个。
 
 所有角色状态有:
@@ -363,15 +363,14 @@ hide monika
 
 则会将莫妮卡从当前屏幕上隐藏。
 
-hide语句同样可以使用附加参数，但只能使用with从句，使用方法与show语句的with从句相同，详细请见第\ref{subsubsec:2.2.2.1}课。
+hide语句同样可以使用附加参数，但只能使用with从句，使用方法与show语句的with从句相同，详细请见第\ref{subsubsec:3.2.2.1}课。
 
 \begin{ExtraKnowledge}
-    扩展知识：hide语句同样可以使用onlayer从句，用于隐藏对应图层上的图像。但在游戏中很少会涉及到对图层的操作，故本书不会对onlayer从句展开讲解。有兴趣者课前往\url{https://doc.
-    renpy.cn/zh-CN/displaying_images.htm}了解详细内容。
+    扩展知识：hide语句同样可以使用onlayer从句，用于隐藏对应图层上的图像。但在游戏中很少会涉及到对图层的操作，故本书不会对onlayer从句展开讲解。有兴趣者课前往 \url{https://doc.renpy.cn/zh-CN/displaying_images.htm} 了解详细内容。
 \end{ExtraKnowledge}
 
 \subsubsection{scene语句}
-\label{subsubsec:2.2.2.3}
+\label{subsubsec:3.2.2.3}
 
 scene语句类似于show语句，但与show语句有一个很明显的差异⸺使用scen语句会清空当前屏幕上的所有图像。scene语句的显示方式和特性的使用效果与show语句一致。
 
@@ -403,7 +402,7 @@ label ch0_start:
 scene <图片编号> <with从句>
 \end{lstlisting}
 
-with从句的使用方法与hide、show语句相同。详细请见\ref{subsubsec:2.2.2.1}。
+with从句的使用方法与hide、show语句相同。详细请见\ref{subsubsec:3.2.2.1}。
 
 \subsection{play、stop、voice语句}
 现在，在我们的视觉小说中，图像有了，人物立绘与背景也有了，但还是缺了一些东西，比如音
@@ -522,7 +521,7 @@ Ren'Py同时还提供了自动语音功能，省去了麻烦的voice语句。
 对话标识号是ch1\_n\_end\_24e41fcf，那么当对应的对话显示时，Ren'Py会寻找文件mod\_assets/voice/ch1\_n\_end\_24e41fcf.ogg。如果文件存在，Ren'Py会播放这个文件。
 
 \subsection{menu语句}
-在视觉小说中，往往会有很多选择。这些选择通常能够影响剧情的走向，进入不同的分支。在本课中，你将会学习menu语句的基本用法。
+在视觉小说中，往往会有很多选择。这些选择通常能够影响剧情的走向，进入不同的分支。在本节中，你将会学习menu语句的基本用法。
 
 读下列代码并尝试运行，看看实际的运行效果：
 \begin{lstlisting}[caption=script-ch1.rpy]
@@ -558,5 +557,5 @@ menu的基本语法为：
         "这是一个选项示例" # 文本框内显示的内容。
         "选项 1": # 选项名称
             # 选择此项后所的脚本。
-        ... # 可以添加更多选项。
+        # 可以添加更多选项。
 \end{lstlisting}
