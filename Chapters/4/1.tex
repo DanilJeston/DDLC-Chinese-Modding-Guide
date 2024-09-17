@@ -2,7 +2,7 @@
 一般来说，在Mod工程里的game文件夹下会有一个名叫mod\_assets的文件夹。所有在mod\_assets文件夹里的内容都会在生成发行版时被打包成一个rpa文件。（在后续的章节里，我们将会详细学习如何控制哪些文件打包、哪些不打包，以及如何生成发行版）
 
 \begin{ExtraKnowledge}
-    目前，常见的资源获取方法有：从DDLC Community Assets获取（Google Drive）、从一些开发QQ群内获取打包好的DDLC Communi Assets、Reddit等。
+    目前，常见的资源获取方法有：从DDLC Community Assets获取（Google Drive）、从一些开发QQ群内获取打包好的DDLC Community Assets、Reddit等。
 \end{ExtraKnowledge}
 
 \begin{Attention}
@@ -79,8 +79,8 @@ define c = DynamicCharacter('c_name', image='charlie', what_prefix='"', what_suf
 现在，在mod\_assets文件夹下创造一个名为images的文件夹。在后续的教程中，我们将会把所有的图片资源都存储在这个images文件夹内。
 
 \begin{Warning}
-请注意，对于所有图片，其格式都应为PNG，且背景应该是透明的。
-角色立绘资源的分辨率应为960x960以保证兼容性，且对于一个完整的立绘应遵循原版DDLC的原则分成三个图像：头部、左半身、右半身。角色立绘编号不能和已有的重复。
+请注意，对于所有图片，其格式都应为PNG，且背景应该是透明的，图像编号不能和已有的重复。
+角色立绘资源的分辨率应为960x960以保证兼容性，且对于一个完整的立绘应遵循原版DDLC的原则分成三个图像：头部、左半身、右半身。
 背景图像的尺寸应为16:9，分辨率应该为1280x720。如果图像资源分辨率扩大，您可以使用软件降低图像分辨率或使用size属性解决：
 \begin{lstlisting}
 size (1280,720) # 添加 size 属性
@@ -127,6 +127,14 @@ image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/
     \end{lstlisting}
 \end{enumerate}
 
+例如现在为尤里增添了新的服装与表情，且图像资源名分别为 1l, 1r, happy.png
+那么您使用的代码应该长这个样子：
+\begin{lstlisting}
+# m means mod
+images yuri m1a = im.Composite((960, 960), (0, 0), "mod_assets/images/yuri/1l.png", (0, 0), "mod_assets/images/yuri/1r.png", (0,0), "mod_assets/images/yuri/happy.png")
+\end{lstlisting}
+
+
 对于角色立绘的列举，您可以前往 \url{https://docs.dokimod.top/pages/0a59cf/} 查看。
 
 \subsubsection{背景图像}
@@ -138,9 +146,6 @@ image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/
 image bg <背景名> = "mod_assets/images/bg/<背景图像资源名>.png"
 \end{lstlisting}
 
-\begin{Example}
-image bg school = "mod\_assets/images/bg/school.png"
-\end{Example}
 
 \subsection{音频资源}
 现在，在mod\_assets文件夹下创造一个名为audio的文件夹。将音频放进您刚才创建的文件夹内，同时我们建议您将音频名改为小写的单词。
@@ -157,5 +162,7 @@ image bg school = "mod\_assets/images/bg/school.png"
 
 然后，打开definitions.rpy文件，新增以下代码：
 \begin{lstlisting}
-define audio.<音频名> = "mod_assets/audio/<音频名>.<后缀名>"
+define audio.<音频名> = "mod_assets/audio/<音频文件名>.<后缀名>"
 \end{lstlisting}
+
+请注意，音频名不能和已有的定义重复，否则会覆盖定义。
