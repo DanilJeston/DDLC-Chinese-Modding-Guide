@@ -1,0 +1,50 @@
+\section{使用变量}
+\subsection{python语句块}
+关于如何在Python语句块中定义变量，请阅读第\ref{sec:3.2}章
+\subsection{define语句}
+define语句在初始化时将一个变量赋值。此变量视为一个常量，初始化之后不应再改变。例如：
+
+\begin{lstlisting}
+define demo = True
+define isActTwo = False
+\end{lstlisting}
+
+这段代码的运行效果等于：
+\begin{lstlisting}
+init python:
+    demo = True
+    isActTwo = False
+\end{lstlisting}
+
+\begin{ExtraKnowledge}
+    在define语句中同样可以指定优先级，只需要在define关键词后添加优先级即可，如：define 3 demo = True。
+\end{ExtraKnowledge}
+
+define还可以为我们创建一个储存区，只需要将define关键词后的变量改为“储存区.变量”的形式即可。
+
+\subsection{default语句}
+default语句会给一个未被定义的变量初始赋值。default语句适合用来定义在游戏过程中会变化的变量。如下例：
+\begin{lstlisting}[numbers=none]
+default demo = False
+\end{lstlisting}
+
+当demo这个变量在游戏开始后没有被定义，则将等价于在start脚本标签中定义demo，且值为False。若在存档加载后没有被定义，则等价于在after\_load魔法标签中定义demo，且值为False。
+
+\subsection{持久化数据}
+
+持久化数据是Ren'Py中的一个储存区，无论用户怎样存档、读档，持久化数据区的数据总是独立于Ren'Py的存档数据的。如DDLC中，对于用户是否在一周目走过了每一条支线、解锁了每一个CG的字典（dict），就存储在持久化数据中，避免因读档存档导致数据消失。简单来说，持久化数据就是不会随着存档、读档而改变的数据。
+
+一般来说，在使用DDLC中文Mod模板制作的游戏的标准位置里会有一个名为 DDLCModTemplateZh的文件夹，里面通常有一个名为persistent的文件，那就是存储持久化数据的存档文件。
+
+持久化数据的用法就和普通变量一样，只不过在前面需要加上“persistent.”前缀。简单来说，持久化数据的语法如下：
+
+\begin{lstlisting}
+persistent.<变量名> = <Python 数据类型>
+\end{lstlisting}
+
+例如：
+\begin{lstlisting}
+default persistent.monika_deleted = False
+\end{lstlisting}
+
+无论用户如何重启游戏、读档、存档，除非在代码中对持久化数据进行修改或删除persistent文件，persistent.monika\_deleted的值永远都只会是False。

@@ -1,0 +1,95 @@
+\section{增添资源}
+一般来说，在Mod工程里的game文件夹下会有一个名叫mod\_assets的文件夹。所有在mod\_assets文件夹里的内容都会在生成发行版时被打包成一个rpa文件。（在后续的章节里，我们将会详细学习如何控制哪些文件打包、哪些不打包，以及如何生成发行版）
+
+\begin{ExtraKnowledge}
+    目前，常见的资源获取方法有：从DDLC Community Assets获取（Google Drive）、从一些开发QQ群内获取打包好的DDLC Communi Assets、Reddit等。
+\end{ExtraKnowledge}
+
+\begin{Attention}
+    在使用资源前，请务必注意版权问题。一般来说，在DDLC Community Assets中的文件只需要在感谢名单中添加作者的名字，但也有部分资源会有更多的要求。请记住：在一个资源必须得到作者授权的情况下，没有得到授权就使用该资源的行为是侵权行为。
+\end{Attention}
+
+
+\subsection{定义角色}
+在一些模组中，我们常常需要添加一些角色来丰富故事线，或是推动故事情节的发展。要增加角色，我们需要先了解如何定义一个角色。
+
+定义一个角色有两种方式：Character与DynamicCharacter。两种定义方式几乎没有区别，唯一的区别在于Character的名字是固定的，无法更改的；而DynamicCharacter则使用一个变量作为角色名，是动态的，可以更改。由于DDLC中角色都使用DynamicCharacter来定义角色，故本书不会介绍如何使用Character定义，感兴趣者可以前往Ren'Py中文文档了解。
+
+DynamicCharacter的语法如下：
+
+\begin{lstlisting}
+define <变量名> = DynamicCharacter('<存储角色名的变量名>', image='<say语句的对话属性图像名>', what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed")
+\end{lstlisting}
+
+\begin{Warning}
+    对于say语句的对话属性来说，如果image后的图像名错误，那么将会导致其无法使用。所以请务必确保image后的图像名与您定义的角色立绘名一致。对于角色立绘名，请参考\ref{par:3.2.1}
+\end{Warning}
+
+\begin{ExtraKnowledge}
+    在某些情况下，我们可能改变角色说话内容的双引号为其他符号，我们可以通过修改what\_prefix和what\_suffix实现效果。
+
+    正常情况下，除旁白外所有的角色说的话都会被双引号包住。如：
+    \begin{lstlisting}
+m "你好"
+    \end{lstlisting}
+
+    那么在游戏中的效果为："你好"。如果我们想要修改为：【你好】，那么只需要找到莫妮卡角色的定义，并将what\_prefix改为'【', what\_suffix改为'】'即可实现。实际代码如下：
+    \begin{lstlisting}
+define m = DynamicCharacter('m_name', image='monika', what_prefix='【', what_suffix='】', ctc='ctc', ctc_position='fixed')
+    \end{lstlisting}
+\end{ExtraKnowledge}
+
+如我现在需要定义一个名为Charlie的角色，其使用的图像名为charlie，存储角色名的变量名叫c\_name：
+\begin{lstlisting}
+define c_name = "Charlie"
+define c = DynamicCharacter('c_name', image='charlie', what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed")
+\end{lstlisting}
+
+现在，我们就成功定义了Charlie这个角色。那么这段代码应该放在哪里呢？答案是game目录下的definitions.rpy文件内。这个文件里储存着所有在游戏中需要用到的资源的定义。
+
+打开编辑器的查找功能，搜索：“define s = DynamicCharacter”，随后在这一行上面或下面增添例如上述的代码。
+
+现在，definitions.rpy文件内的代码应该长这样：
+\begin{lstlisting}
+    # 角色变量
+
+    define narrator = Character(ctc="ctc", ctc_position="fixed")
+    define mc = DynamicCharacter('player', what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed")
+    define s = DynamicCharacter('s_name', image='sayori', what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed")
+    define m = DynamicCharacter('m_name', image='monika', what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed")
+    define n = DynamicCharacter('n_name', image='natsuki', what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed")
+    define y = DynamicCharacter('y_name', image='yuri', what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed")
+    define ny = Character('夏树 & 优里', what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed")
+    define c = DynamicCharacter('c_name', image='charlie', what_prefix='"', what_suffix='"', ctc="ctc", ctc_position="fixed")
+    
+    # ...
+    
+    # Default Name Variables
+    default s_name = "纱世里"
+    default m_name = "莫妮卡"
+    default n_name = "夏树"
+    default y_name = "优里"
+    default a_name = "Charlie"
+    
+    
+\end{lstlisting}
+
+\subsection{增加、定义图片}
+
+现在，在mod\_assets文件夹下创造一个名为images的文件夹。在后续的教程中，我们将会把所有的图片资源都存储在这个images文件夹内。
+
+\begin{Warning}
+图像资源的格式应该为PNG，且背景应该是透明的。
+角色图像资源的分辨率应为 960x960 以保证兼容性。
+背景图像的分辨率应该为 1280x720，否则图片在显示时会出现意料之外的状况。如果背景图片的分辨率超过上述分辨率，至少您的图片也应该为 16:9 的尺寸，这种情况下可以使用增添size属性解决问题：
+
+\begin{lstlisting}
+size (1280,720) # 添加 size 属性
+\end{lstlisting}
+
+为了兼容性，我们建议您新建的所有文件（夹）名称全部为英文小写字母，且不使用中文。
+\end{Warning}
+
+\subsubsection{角色图片}
+
+在获取角色资源图片后，

@@ -1,0 +1,74 @@
+\ProvidesPackage{MyStyle}
+
+% Import packages
+\RequirePackage{makeidx, bookmark, geometry, fancyhdr, tcolorbox, hyperref, graphicx, float, subfig, enumitem, caption, supertabular, tikz, fontspec, xparse}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage[fontset=none,scheme=chinese,heading=true]{ctex}
+
+% Set the style
+\geometry{a4paper,left=1.25in,right=1.25in,top=1in,bottom=1in}
+\renewcommand{\listtablename}{表格列表}
+
+% Set Default Fonts
+\setCJKmainfont{思源宋体}[ItalicFont=JiangChengXieSong]
+\setCJKsansfont{思源黑体}[ItalicFont=JiangChengXieHei]
+\setCJKmonofont{思源等宽}[BoldFont=思源等宽 Bold, ItalicFont=JiangChengXieHei]
+
+\setmainfont{Source Serif 4 Display}[ItalicFont=SourceSerif4Display-It]
+\setsansfont{Source Sans 3}[ItalicFont=SourceSans3-It]
+\setmonofont{Hack}[BoldFont=Hack-Bold, ItalicFont=Hack-Italic]
+
+\setlength{\headheight}{13pt}
+
+
+% Add additional fonts
+\setCJKfamilyfont{FZKaiTi}{方正楷体_GBK}
+\setCJKfamilyfont{FZFangSong}{方正仿宋_GBK}
+\newcommand{\FZKaiTi}{\CJKfamily{FZKaiTi}}
+\newcommand{\FZFangSong}{\CJKfamily{FZFangSong}}
+
+
+% Set the style of the hyper link
+\hypersetup{
+	colorlinks=true,
+	linkcolor=RoyalBlue, 
+    urlcolor=blue,
+}
+
+% Set page style.
+\pagestyle{fancy}
+
+% Set colors
+\definecolor{CPPLight}  {HTML} {686868}
+\definecolor{CPPSteel}  {HTML} {888888}
+\definecolor{CPPDark}   {HTML} {262626}
+\definecolor{CPPBlue}   {HTML} {4172A3}
+\definecolor{CPPGreen}  {HTML} {487818}
+\definecolor{CPPBrown}  {HTML} {A07040}
+\definecolor{CPPRed}    {HTML} {AD4D3A}
+\definecolor{CPPViolet} {HTML} {7040A0}
+\definecolor{CPPGray}  {HTML} {B8B8B8}
+\definecolor{darkgreen}{RGB}{105, 190, 78}
+\definecolor{darkyellow}{RGB}{150, 150, 0}
+
+% Set the style of the list
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+
+% Set counter to make the index
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% Define the command
+\newcommand{\UserInput}[1]{\textbf{\#输入：#1}}
+\newcommand{\Output}[1]{\textit{\#输出：#1}}
+\newcommand{\PyOnly}{\textbf{[Python Only]}}
+\newenvironment{ChapterGoals}{\textbf{本节目标包括：}}{}
+
+% Define the color box
+\tcbuselibrary{breakable}
+
+\newtcolorbox{Comment}{colback = cyan!25, colframe=cyan!75, title=注释, fonttitle=\large \FZKaiTi, fontupper=\FZFangSong, breakable}
+\newtcolorbox{ExtraKnowledge}{colback = green!25, colframe=darkgreen, title=扩展知识, fonttitle=\large \FZKaiTi, fontupper=\FZFangSong, breakable}
+\newtcolorbox{Warning}{colback = yellow!25, colframe=darkyellow, title=警告, fonttitle=\large \FZKaiTi, fontupper=\FZFangSong, breakable}
+\newtcolorbox{Attention}{colback = red!25, colframe=red!75, title=必须注意, fonttitle=\large \FZKaiTi, fontupper=\FZFangSong, breakable}

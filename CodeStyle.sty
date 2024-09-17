@@ -1,0 +1,32 @@
+\ProvidesPackage{CodeStyle}
+\RequirePackage{listings}
+
+\renewcommand{\lstlistingname}{代码}
+\renewcommand{\lstlistlistingname}{\lstlistingname 示例列表}
+
+\lstset{
+	backgroundcolor=\color[RGB]{230, 230, 230},
+	tabsize=4,
+	basicstyle=\ttfamily,
+	breaklines=true,
+	%framextopmargin=50pt,
+	%frame=bottomline,
+	columns=fixed,       
+    numbers=left,                                       % 在左侧显示行号
+	frame=none,                                          % 不显示背景边框
+	keywordstyle=\color[RGB]{70, 130, 180},
+	commentstyle=\color[RGB]{105, 105, 105},
+	stringstyle=\color[RGB]{110, 139, 61},
+	numberstyle=\footnotesize\color{darkgray},           % 设定行号格式
+	% xleftmargin=1em,
+	% xrightmargin=1em, 
+	aboveskip=0.5em,
+	showstringspaces=false,                              % 不显示字符串中的空格
+	language=python,                                     % 设置语言
+	morekeywords={label,call,jump,define,default,show,scene,play,stop,voice,menu,python,init,\$,hide},
+	emph={bg,at,zorder,music,sound,loop,fadein,fadeout,noloop,config,renpy,say,expression},
+	emphstyle=\color{CPPViolet},
+    texcl=true,
+    escapechar=\%,
+	captionpos=b,
+}

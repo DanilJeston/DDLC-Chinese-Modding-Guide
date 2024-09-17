@@ -1,0 +1,33 @@
+\documentclass[a4paper,openany]{book}
+\usepackage{MyStyle}
+\usepackage{CodeStyle}
+
+\hypersetup{
+  pdftitle={DDLC Mod开发指南},
+  pdfkeywords={DDLC, Mod},
+  pdfcreator={PartyParrot},
+}
+
+\makeindex
+
+\begin{document}
+
+% \pagenumbering{Alph}
+\input{Chapters/Title}
+
+% \title{\Huge \sffamily \bfseries{DDLC Mod 开发指南}}
+% \author{\huge \sffamily PartyParrot}
+% \date{\sffamily \today}
+% \maketitle
+
+\frontmatter
+\input{Chapters/Preface}
+\tableofcontents
+
+\mainmatter
+\input{Chapters/Chap.1}
+\input{Chapters/Chap.2}
+\input{Chapters/Chap.3}
+\input{Chapters/Chap.4}
+
+\end{document}

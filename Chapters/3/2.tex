@@ -1,0 +1,112 @@
+\section{函数与类\PyOnly }
+
+\subsection{函数}
+在编程中，我们往往会重复执行一段代码或进行类似的操作。为了减少代码的重复，我们可以使用函数。函数的作用就是把相对独立的某个功能抽象出来，成为一个独立的个体。
+
+\subsubsection{函数的定义}
+定义一个函数，只需要开头为def即可。如下例：
+\begin{lstlisting}
+def test(arg1, arg2):
+    print("Arg1 is: " + arg1)
+    print("Arg2 is: " + arg2)
+    return
+\end{lstlisting}
+
+其中，test为这个函数的名字，arg1、arg2则为这个函数接受的参数。若留空，在代表该函数不接受参数。引号后的部分被称为函数主体，是调用该函数后具体的一些代码。return语句则是函数运行成功后返回的值，可以留空。
+
+调用函数也非常简单，如下例：
+\begin{lstlisting}
+test(1, 2)
+%\Output{Arg1 is: 1}%
+%\Output{Arg2 is: 2}%
+
+test(5, arg2=1)
+%\Output{Arg1 is: 5}%
+%\Output{Arg2 is: 1}%
+
+test(arg2=4, arg1=2)
+%\Output{Arg1 is: 2}%
+%\Output{Arg2 is: 4}%
+
+test(arg1=7, arg2=-7)
+%\Output{Arg1 is: 7}%
+%\Output{Arg2 is: -7}%
+\end{lstlisting}
+
+由此可见，在给函数传递参数时，可以直接传递，也可以使用“参数名=参数”的方式传递。
+
+\subsubsection{函数命名空间}
+所有在函数中的变量，都位于一个独立的命名空间内。该命名空间只能在该函数内使用，函数外的代码都无法读取或修改函数命名空间内的变量。同时，函数内也无法直接修改全局命名空间的变量。
+
+如下例：
+\begin{lstlisting}
+>>> a = 1
+>>> def test():
+...     a = 2
+...     print(a)
+>>> print(a)
+%\Output{1}%
+>>> test()
+%\Output{2}%
+>>> print(a)
+%\Output{1}%
+\end{lstlisting}
+
+如果要在函数内修改全局变量，则应使用global语句声明要使用的变量，如下例：
+\begin{lstlisting}
+>>> a = 1
+>>> def test():
+...     global a
+...     a = 2
+...     print(a)
+
+
+>>> print(a)
+%\Output{1}%
+>>> test()
+%\Output{2}%
+>>> print(a)
+%\Output{2}%
+\end{lstlisting}
+
+\subsection{类}
+Python是一门面向对象的语言，而类是一种用来描述具有相同属性和方法（函数）的对象的集合。它定义了该集合中每个对象共同具有的方法。对象是类的实例化。
+
+\subsubsection{类的定义}
+定义一个类，只需要开头为class即可。如下例：
+
+\begin{lstlisting}
+class Test:
+    def __init__(self):
+        self.a = 1
+
+    def counter(self):
+        self.a += 1
+        print(self.a)
+\end{lstlisting}
+
+上述例子中，定义了一个名为Test的类，这个类中有一个变量为a，且有一个counter方法用于打印a的值。
+\begin{ExtraKnowledge}
+    在类中，以双下划线开头的、具有特殊的方法名的方法叫魔法方法（Magic Methods)。上述例子中的\_\_init\_\_特殊方法用于在实例话一个类时会运行的初始化函数。类似的魔法方法还有\_\_eq\_\_，\_\_ne\_\_等。
+
+    self是一个特殊的参数。当类被实例化后，无论调用其中的哪一个方法，Python都会给第一个参数传递这个对象自己，且第一个参数一定指向这个对象。
+\end{ExtraKnowledge}
+
+\subsubsection{类的使用}
+在使用类前，需要对类进行实例化。实例化后，类就会变成对象。创造对象和创造变量类似。如下例：
+
+\begin{lstlisting}
+>>> test = Test()
+>>> test.counter()
+%\Output{2}%
+>>> test.counter()
+%\Output{3}%
+\end{lstlisting}
+
+第一行的“test = Test()”创造了一个Test对象。剩下两行代码则是在调用这个对象的counter方法。
+
+如果要在类中如果要定义或使用一个属性，必须使用“self.”的方式进行赋值，否则这个属性就只会存在于方法的命名空间而不是对象的命名空间。
+
+\begin{ExtraKnowledge}
+    Python中类与函数的使用远远不止这些，您可以前往\url{https://www.runoob.com/python3/python3-function.html}与\url{https://www.runoob.com/python3/python3-class.html}了解更多。
+\end{ExtraKnowledge}
