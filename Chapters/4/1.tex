@@ -99,7 +99,10 @@ size (1280,720) # 添加 size 属性
 image <图像名> = "<资源地址>"
 \end{lstlisting}
 
-但由于DDLC将角色立绘拆分成为了三部分（请参考\ref{para:3.2.2.1}），故对于角色立绘的定义会非常的复杂。
+使用image定义后的图像就可以被show语句使用了。
+
+
+由于DDLC将角色立绘拆分成为了三部分（请参考\ref{para:3.2.2.1}），故对于角色立绘的定义会非常的复杂。
 
 您可以按照以下步骤判断选取相应的代码进行修改：
 \begin{enumerate}
@@ -127,7 +130,7 @@ image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/
     \end{lstlisting}
 \end{enumerate}
 
-例如现在为尤里增添了新的服装与表情，且图像资源名分别为 1l, 1r, happy.png
+例如现在为优里增添了新的服装与表情，且图像资源名分别为 1l, 1r, happy.png
 那么您使用的代码应该长这个样子：
 \begin{lstlisting}
 # m means mod
@@ -146,6 +149,9 @@ images yuri m1a = im.Composite((960, 960), (0, 0), "mod_assets/images/yuri/1l.pn
 image bg <背景名> = "mod_assets/images/bg/<背景图像资源名>.png"
 \end{lstlisting}
 
+\begin{ExtraKnowledge}
+    这里的bg指background，它实际上是图像名的一部分，其目的是为了区分角色立绘与背景立绘。
+\end{ExtraKnowledge}
 
 \subsection{音频资源}
 现在，在mod\_assets文件夹下创造一个名为audio的文件夹。将音频放进您刚才创建的文件夹内，同时我们建议您将音频名改为小写的单词。
@@ -166,3 +172,36 @@ define audio.<音频名> = "mod_assets/audio/<音频文件名>.<后缀名>"
 \end{lstlisting}
 
 请注意，音频名不能和已有的定义重复，否则会覆盖定义。
+
+\subsubsection{节选播放}
+Ren'Py支持将音频切割成一段播放。其中，共有三种行为：
+\begin{itemize}
+    \item from
+    \item to
+    \item loop
+\end{itemize}
+
+\paragraph{from to} from与to标签用于指定播放文件的起始位置和终止位置。其基本用法为：
+\begin{lstlisting}
+<from [开始] to [结束]>
+\end{lstlisting}
+例如，现在有一个音频名为“festival.ogg”存放在mod\_assets文件夹中。现在我们想要从这个音频的第5秒开始播放，到第15秒停止，我们可以修改音频的定义为：
+
+\begin{lstlisting}
+define festival = "<from 5 to 15>mod_assets/festival.ogg"
+\end{lstlisting}
+
+这样，在播放festival音频时就会从第5秒开始，到第15秒结束。
+
+\paragraph{loop} loop标签用于指定音频循环播放。其基本用法为：
+
+\begin{lstlisting}
+<loop [开始，默认为0]>
+\end{lstlisting}
+
+例如，现在有一个音频名为“music.ogg”，我们想要从第10秒开始播放，并循环播放这个音频，可以修改音频的定义为：
+
+\begin{lstlisting}
+define bg_music = "<loop 10>mod_assets/music.ogg"
+\end{lstlisting}
+
