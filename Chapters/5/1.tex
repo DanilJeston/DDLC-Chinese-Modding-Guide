@@ -16,9 +16,9 @@ bsod.rpy中定义了DDLC二周目中“电脑蓝屏”的特殊效果。代码�
 
 这个文件中定义了假结局中莫妮卡删除CG时使用的控制台。其使用方法为：
 \begin{lstlisting}
-call updateconsole(text="<命令>", history="<提示消息>") # 第一次调用控制台
+call updateconsole(text="<命令>", history="<输出>")# 第一次调用
 
-call updateconsolehistory(text="<提示消息>") # 更新提示消息
+call updateconsolehistory(text="<输出>") # 更新输出
 
 call hideconsole  # 隐藏控制台
 \end{lstlisting}

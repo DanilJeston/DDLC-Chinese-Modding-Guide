@@ -70,7 +70,7 @@ test(arg1=7, arg2=-7)
 \end{lstlisting}
 
 \subsection{类}
-Python是一门面向对象的语言，而类是一种用来描述具有相同属性和方法（函数）的对象的集合。它定义了该集合中每个对象共同具有的方法。对象是类的实例化。
+Python是一门面向对象的语言，而类是一种用来描述具有相同属性和方法（函数）的对象的集合。它定义了该集合中每个对象共同具有的方法。对象是类的实例化，实例化就是用类创建对象的过程。
 
 \subsubsection{类的定义}
 定义一个类，只需要开头为class即可。如下例：
@@ -93,7 +93,7 @@ class Test:
 \end{ExtraKnowledge}
 
 \subsubsection{类的使用}
-在使用类前，需要对类进行实例化。实例化后，类就会变成对象。创造对象和创造变量类似。如下例：
+一般来说，在使用类前，需要对类进行实例化。实例化后，类就会变成对象。创造对象和创造变量类似。如下例：
 
 \begin{lstlisting}
 >>> test = Test()
@@ -105,7 +105,7 @@ class Test:
 
 第一行的“test = Test()”创造了一个Test对象。剩下两行代码则是在调用这个对象的counter方法。
 
-如果要在类中如果要定义或使用一个属性，必须使用“self.”的方式进行赋值，否则这个属性就只会存在于方法的命名空间而不是对象的命名空间。
+如果要在类中如果要定义或使用一个属性，必须使用“self.<变量名> = <值>”的方式进行赋值，否则这个属性就只会存在于方法的命名空间而不是对象的命名空间。简单理解就是如果不使用上述方式赋值，那么这个值就不会被保存到对象里面。
 
 \begin{ExtraKnowledge}
     Python中类与函数的使用远远不止这些，您可以前往 \url{https://www.runoob.com/python3/python3-function.html} 与 \url{https://www.runoob.com/python3/python3-class.html} 了解更多。

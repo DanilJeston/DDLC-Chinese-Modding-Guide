@@ -28,7 +28,7 @@ default语句会给一个未被定义的变量初始赋值。default语句适合
 default demo = False
 \end{lstlisting}
 
-当demo这个变量在游戏开始后没有被定义，则将等价于在start脚本标签中定义demo，且值为False。若在存档加载后没有被定义，则等价于在after\_load魔法标签中定义demo，且值为False。总而言之，若demo这个变量在游戏开始时没有被定义，那么它的值就是False
+当demo这个变量在游戏开始后没有被定义，则将等价于在start脚本标签中定义demo，且值为False。若在存档加载后没有被定义，则等价于在after\_load魔法标签中定义demo，且值为False。总而言之，若demo这个变量在游戏开始时没有被定义，那么它的值就是False，除非在后来的代码中它的值被改变了。
 
 \subsection{持久化数据}
 
