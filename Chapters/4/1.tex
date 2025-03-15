@@ -2,11 +2,11 @@
 一般来说，在Mod工程里的game文件夹下会有一个名叫mod\_assets的文件夹。所有在mod\_assets文件夹里的内容都会在生成发行版时被打包成一个rpa文件。（在后续的章节里，我们将会详细学习如何控制哪些文件打包、哪些不打包，以及如何生成发行版）
 
 \begin{ExtraKnowledge}
-    目前，常见的资源获取方法有：从DDLC Community Assets获取（Google Drive）、从一些开发QQ群内获取打包好的DDLC Community Assets、Reddit等。
+    目前，常见的资源获取方法有：从DDLC Community Assets获取（Google Drive）、从一些开发QQ群提供的资源、Reddit等。
 \end{ExtraKnowledge}
 
 \begin{Attention}
-    在使用资源前，请务必注意版权问题。一般来说，在DDLC Community Assets中的文件只需要在感谢名单中添加作者的名字，但也有部分资源会有更多的要求。请记住：在一个资源必须得到作者授权的情况下，没有得到授权就使用该资源的行为是侵权行为。
+    在使用资源前，请务必注意版权问题。一般来说，在DDLC Community Assets中的文件只需要在感谢名单中添加作者的名字，但也有部分资源会有更多的要求。请记住：在一个资源必须得到作者授权的情况下，没有得到授权就使用该资源的行为是侵权行为。保护作者的知识产权，不仅是在维护作者的权利，更是促进DDLC社区的更好发展。
 \end{Attention}
 
 
@@ -33,7 +33,7 @@ define <变量名> = DynamicCharacter('<存储角色名的变量名>', image='<s
 m "你好"
     \end{lstlisting}
 
-    那么在游戏中的效果为："你好"。如果我们想要修改为：「你好」，那么只需要找到莫妮卡角色的定义，并将what\_prefix改为'「', what\_suffix改为'」'即可实现。实际代码如下：
+    那么在游戏中的效果为：“你好”。如果我们想要修改为：「你好」，那么只需要找到莫妮卡角色的定义，并将what\_prefix改为'「', what\_suffix改为'」'即可实现。实际代码如下：
     \begin{lstlisting}
 define m = DynamicCharacter('m_name', image='monika', what_prefix='「', what_suffix='」', ctc='ctc', ctc_position='fixed')
     \end{lstlisting}

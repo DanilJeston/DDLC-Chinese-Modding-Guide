@@ -10,7 +10,7 @@ bsod.rpy中定义了DDLC二周目中“电脑蓝屏”的特殊效果。代码�
 \begin{lstlisting}
 call screen bsod()
 
-call screen bsod(bsodCode="<错误代码>", bsodFile="<蓝屏文件，默认libGLESv2.dll>", rsod=False, chinese_screen=True)
+call screen bsod(bsodCode="<错误代码>", bsodFile="<蓝屏文件，默认libGLESv2.dll>", rsod=<bool值，默认为False>, chinese_screen=<bool值，默认为True>)
 \end{lstlisting}
 
 其中，bsodCode是一串伪造的错误代码。默认为DDLC\_ESCAPE\_PLAN\_FAILED。
@@ -50,5 +50,39 @@ call updateconsole(text="print('Hello, World'), history="Hello, World")
 
 \subsection{glitchtext.rpy}
 
-glitchtext.rpy中定义了乱码文字。
-我们可以通过调用
+glitchtext.rpy中定义了乱码文字。我们可以通过调用glitchtext函数生成一段乱码文字。其使用方法如下:
+\begin{lstlisting}
+$ <变量名> = glitchtext(<长度>)
+\end{lstlisting}
+
+
+例如我想要生成一串长度为 200 的乱码字符，并把它赋值给一个名为 gtext 的变量，可以用以下的代码:
+\begin{lstlisting}
+$ gtext = glitchtext(200)
+\end{lstlisting}
+
+\subsection{poems\_special.rpy\textbackslash poems-tl.rpy\textbackslash poems.rpy}
+
+这三个文件共同存储了在游戏中出现的诗歌。其中poems\_special.rpy 定义了二周目的特殊诗歌，poems-tl.rpy存储着中文版本的诗歌，poems.rpy则是原版的诗歌。
+
+我们可以按照以下模板定义一首新的诗歌：
+\begin{lstlisting}
+poem_<编号> = Poem(
+    author = <作者名>,
+    title = <标题>,
+    text = """\
+<具体诗歌内容>"""
+    )
+\end{lstlisting}
+
+同时我们也可以通过showpoem来展示诗歌。如下例：
+\begin{lstlisting}
+poem_a = Poem(
+    author = "mc",
+    title = "Empty",
+    text = """\
+婚姻，热情，童年，快乐，色彩，希望，友人，可爱，松软，单纯，糖果，购物，狗狗，猫咪，云朵，决意，自杀，想象，秘密，活泼，存在，璀璨，绯红，飓风"""
+)
+
+call showpoem(poem_a)
+\end{lstlisting}
