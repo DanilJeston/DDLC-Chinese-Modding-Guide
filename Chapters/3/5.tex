@@ -95,7 +95,7 @@ label ch0_start:
 
 运行上述代码，我们会发现在玩家做出选择后，执行了在script-ch1\_tasks.rpy中的label中的内容。这就依赖于call语句和jump语句为我们提供的跳转功能了。
 
-call语句和jump语句可以将程序跳转到一个指定的脚本标签处，并且当指定的脚本标签执行完毕后，会自动返回到主控标签继续运行下面的代码。
+call语句和jump语句可以将程序跳转到一个指定的脚本标签处。
 
 call语句和jump语句的语法如下：
 \begin{lstlisting}
@@ -110,15 +110,16 @@ call/jump expression <label expressions>
 
 如下例：
 \begin{lstlisting}
-label main:
+label ch0_start:
     scene bg club_day
     m "你现在正在主标签内。"
     $ today_winner = "sayori"
     call test_natsuki
     m "哦，你回来了？（跳转到 test_natsuki 标签后返回主标签。）"
-    call expression "test" + today_winner
+    call expression "test_" + today_winner
     m "你刚刚又去哪里了？（跳转到 test_sayori 标签后再次返回主标签。）"
     jump no_way
+    m "[player]，你还在吗？（这行不会被执行）"
     return
 
 label test_natsuki:
@@ -126,17 +127,17 @@ label test_natsuki:
     return
 
 label test_sayori:
-    s "你跳转到了 sub2 标签内。"
+    s "你跳转到了 test_sayori 标签内。"
     return
 
 label no_way:
-    y "好吧，看起来你回不去了。"
+    y "好吧，看起来你回不去了。（因为使用了jump，所以你无法回到莫妮卡那里了）"
     return
 \end{lstlisting}
 
-运行上述代码，我们会发现我们一开始会运行main标签中的内容。接着，我们会跳转到test\_natsuki标签内并运行代码，运行完成后我们会返回到main标签中，随后再次跳转到test\_sayori标签内，然后我们又回到了main标签中，最后，我们跳转到了no\_way标签中，并且不再返回main标签，而是回到开始界面。
+运行上述代码，我们会发现我们一开始会运行ch0\_start标签中的内容。接着，我们会跳转到test\_natsuki标签内并运行代码，运行完成后我们会返回到ch0\_start标签中，随后再次跳转到test\_sayori标签内，然后我们又回到了ch0\_start标签中，最后，我们跳转到了no\_way标签中，并且不再返回ch0\_start标签，而是回到开始界面。
 
-你或许注意到了，在main中我们并没有直接使用call test\_sayori语句，而是使用了一个简单的表达式，然后把这个运算结果传递给了call。这就是expression选项的作用。使用expression选项，我们不用把标签名写死在程序里，可以立即运算表达式的结果并传递给call。这样做的好处是可以方便地在同一日的多个分支中跳转。
+你或许注意到了，在ch0\_start中我们并没有直接使用call test\_sayori语句，而是使用了一个简单的表达式，然后把这个运算结果传递给了call。这就是expression选项的作用。使用expression选项，我们不用把标签名写死在程序里，可以立即运算表达式的结果并传递给call。这样做的好处是可以方便地在同一日的多个分支中跳转。
 
 \subsection{if 判断}
 大多数游戏中都具有多条剧情线。但面对一些只希望玩家触发多条剧情中的一条时，我们就可以利用if语句判断玩家的剧情线路。在Python和Ren'Py中，if语句的基本语法为：
@@ -182,7 +183,7 @@ Math is still correct.
 
 当有多个表达式需要同时进行判断或当表达式为False时需要执行一些代码，我们就可以使用elif和else语句。
 
-当if语句中的表达式为False时，会执行else语句的内容。请注意，if、elif或else都必须跟在一起。如下例：
+当if语句中的表达式为False时，会执行else语句的内容。请注意，elif或else必须与if连用。如下例：
 
 \begin{lstlisting}
 if 1 + 1 != 2:
@@ -229,7 +230,7 @@ while i < 10:
 \end{lstlisting}
 
 \begin{Warning}
-    请注意，一般表达式不为True，否则就会出现无限循环或死循环。如将上例中的i+= 1删去，就会导致while的表达式始终为True，程序卡死在while循环。在后文中我们将会介绍break和continue语句来打破死循环。
+    请注意，一般表达式不为True，否则就会出现无限循环或死循环。如将上例中的i+= 1删去，就会导致while的表达式始终为True，程序卡死在while循环，导致无法运行下一个代码。在后文中我们将会介绍break和continue语句来打破或跳过循环。
 \end{Warning}
 
 \subsubsection{for循环\PyOnly }
@@ -328,9 +329,9 @@ continue可以跳过当前的循环，如下例：
 
 \begin{lstlisting}
 for i in range(10):
-    print(i)
     if i == 5:
         continue
+    print(i)
 \end{lstlisting}
 
 

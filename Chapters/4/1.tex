@@ -69,7 +69,7 @@ define c = DynamicCharacter('c_name', image='charlie', what_prefix='"', what_suf
     default m_name = "莫妮卡"
     default n_name = "夏树"
     default y_name = "优里"
-    default a_name = "Charlie"
+    default c_name = "Charlie"
     
     
 \end{lstlisting}
@@ -81,7 +81,7 @@ define c = DynamicCharacter('c_name', image='charlie', what_prefix='"', what_suf
 \begin{Warning}
 请注意，对于所有图片，其格式都应为PNG，且背景应该是透明的，图像编号不能和已有的重复。
 角色立绘资源的分辨率应为960x960以保证兼容性，且对于一个完整的立绘应遵循原版DDLC的原则分成三个图像：头部、左半身、右半身。
-背景图像的尺寸应为16:9，分辨率应该为1280x720。如果图像资源分辨率扩大，您可以使用软件降低图像分辨率或使用size属性解决：
+背景图像的尺寸应为16:9，分辨率应该为1280x720。如果图像资源分辨率过大，您可以使用软件降低图像分辨率或使用size属性解决：
 \begin{lstlisting}
 size (1280,720) # 添加 size 属性
 \end{lstlisting}

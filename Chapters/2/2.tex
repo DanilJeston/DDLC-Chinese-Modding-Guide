@@ -41,7 +41,7 @@ say语句是一个十分重要的语法，它可以让视觉小说角色拥有�
         y & 优里（Yuri）\\
         n & 夏树（Natsuki）\\
         mc & 主人公（Main Character）\\
-        留空 & 叙述者（Narrator）\\
+        留空 & 旁白（Narrator）\\
         \hline
     \end{supertabular}
     \captionof{table}{角色名表格}
@@ -229,7 +229,7 @@ bg <背景编号>
     \tablelasttail{\hline}
     \begin{supertabular}{|c|c|}
         \hline
-        at <transform> & 将一个变换(transform)套用到立绘上\\
+        at <transform> & 将一个动画(transform)套用到立绘上\\
         \hline
         with <transform> & 显示图像时使用指定的转场动画(transform)\\
         \hline
@@ -245,7 +245,7 @@ show语句也可以使用behind 从句、as从句、onlayer从句。但由于在
 
 \subparagraph{at、with从句}
 \label{subsubsec:3.2.2.1}
-当变换作为角色变化时，应使用at从句。一个关于变换的例子：t41。在这个变换中，t表示在这个位置上的角色静止站立在原地；4表示一共有4个站位，会将屏幕等分成4份；1表示从左往右该变换是所有站位中的第1个。
+当变换作为角色动画时，应使用at从句。一个关于变换的例子：t41。在这个变换中，t表示在这个位置上的角色静止站立在原地；4表示一共有4个站位，会将屏幕等分成4份；1表示从左往右该变换是所有站位中的第1个。
 
 所有角色状态有:
 
@@ -437,6 +437,8 @@ play <频道名> <文件名>
     在上述例子中，audio.t1是一个变量，且被定义为"<loop 22.073>bgm/1.ogg"。故此处的文件名也可以是一个指向文件名的变量。
 \end{ExtraKnowledge}
 
+对于DDLC中音乐的定义，您可以查阅definitions.rpy中的注释。
+
 \paragraph{播放列表}
 play语句的文件名部分也可以是一个列表，且遵循从首到尾的顺序。
 
@@ -519,7 +521,9 @@ Ren'Py同时还提供了自动语音功能，省去了麻烦的voice语句。
     config.auto_voice = "mod_assets/voice/{id}.ogg"
 \end{lstlisting}
 
-对话标识号是ch1\_n\_end\_24e41fcf，那么当对应的对话显示时，Ren'Py会寻找文件mod\_assets/voice/ch1\_n\_end\_24e41fcf.ogg。如果文件存在，Ren'Py会播放这个文件。
+对话标识号是ch1\_n\_end\_24e41fcf，那么当对应的对话显示时，Ren'Py会寻找文件mod\_asset
+
+s/voice/ch1\_n\_end\_24e41fcf.ogg。如果文件存在，Ren'Py会播放这个文件。
 
 \subsection{menu语句}
 在视觉小说中，往往会有很多选择。这些选择通常能够影响剧情的走向，进入不同的分支。在本节中，你将会学习menu语句的基本用法。
