@@ -1,0 +1,25 @@
+\section{打包模组}
+现在，打开Ren'Py Launcher，点击您的项目，在右边您应该可以找到一个选项名为“构建发行版”。点击后，Ren'Py 会自动扫描一遍您的项目。
+
+扫描完成后，您会见到一个有许多选项的界面。首先，确保“选项”中的“向call语句添加from从句，执行一次”勾选了。
+\begin{ExtraKnowledge}
+    call语句在没有 from 从句的情况下，会有存档损坏的风险。
+\end{ExtraKnowledge}
+现在，取消“构建分发包”中的“PC：Windows and Linux”与“Macintosh”，勾选“Ren'Py 7 DDLC Compliant Mod”，点击“构建”按钮。现在，您的模组就会被Ren'Py编译打包压缩了。
+\begin{Warning}
+    请注意，在编译打包过程中，Ren'Py可能会“假死”。假死的时间取决于您电脑的配置与您模组的大小。在假死期间，不要强制关闭Ren'Py，您只需要静待其编译完成后自动恢复。若Ren'Py被强制关闭，其生成的模组很有可能是损坏的，需要重新生成。
+\end{Warning}
+
+打包完成后，Ren'Py会自动打开生成的模组的位置。打开压缩包，确保在其game/文件夹下没有audio.rpa、fonts.rpa与images.rpa后，您便可以上传您的模组共其他玩家游玩了。
+
+\begin{Attention}
+    根据Team Salvato的IP Guidelines，您应该注意以下几件事：
+    \begin{enumerate}
+        \item 模组里禁止（MUST NOT）包含DDLC原版内容；
+        \item 您不能（NOT ALLOWED）将您的模组上传到任何一个应用商店；
+        \item 您不能（MAY NOT）将DDLC、DDLC Plus、您的模组移植到其他平台（事实上，现在有很多的模组都可以在手机上游玩，这原则上违反了IP Guidelines，但是Dan鸽睁一只眼闭一只眼也就过了）；
+        \item 您的模组不能（NOT ALLOWED）设计在DDLC之前游玩；
+        \item 您的模组应当（MUST）是免费的，且在游戏内不能（MAY NOT）包含任何付款或捐赠链接，也不得鼓励玩家在游戏中捐赠、购买商品或捐款。
+    \end{enumerate}
+    移植模组到手机平台无疑能够扩大DDLC社区。但是若要把模组移植到手机平台，在目前就不得不包含DDLC原版内容。包含DDLC原版内容与移植本身是违反IP Guidelines的（但本指南依然会介绍如何将您的模组移植到手机）。Dan鸽虽然睁一只眼闭一只眼，但这并不意味着我们就能肆意违反IP Guidelines。若您的模组没有移植计划，那么您就不应该制作所谓的“解压即玩”、“傻瓜包”版（即包含原版DDLC内容）。请记住：保护知识产权不仅是保护作者的权利，更是在促进DDLC社区的良好发展。
+\end{Attention}

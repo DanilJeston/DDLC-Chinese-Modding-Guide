@@ -6,24 +6,6 @@
 
 bsod.rpy中定义了DDLC二周目中“电脑蓝屏”的特殊效果。代码会自动检测当前电脑的类型、版本，并生成对应的“死机”效果。
 
-使用方法：
-\begin{lstlisting}
-call screen bsod()
-
-call screen bsod(bsodCode="<错误代码>", bsodFile="<蓝屏文件，默认libGLESv2.dll>", rsod=<bool值，默认为False>, chinese_screen=<bool值，默认为True>)
-\end{lstlisting}
-
-其中，bsodCode是一串伪造的错误代码。默认为DDLC\_ESCAPE\_PLAN\_FAILED。
-
-
-bsodFile是导致蓝屏的文件名，默认为libGLESv2.dll。
-
-
-rsod表示是否在将“蓝屏”替换为“红屏”，默认为False。
-
-
-chinese\_screen表示是否在使用中文版本，默认为True。
-
 
 \subsection{cgs.rpy}
 
