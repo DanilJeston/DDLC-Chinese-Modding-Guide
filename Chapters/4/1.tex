@@ -115,18 +115,18 @@ image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "<角色名>
 
         \item 您只添加了身体姿势:
         \begin{lstlisting}[numbers=none]
-image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "<角色名>/<字母>l.png") 
+image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<数字>r.png", (0, 0), "<角色名>/<字母>l.png") 
         \end{lstlisting}
 
         \item 您同时添加了表情与身体姿势:
         \begin{lstlisting}[numbers=none]
-image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<图像资源>.png") 
+image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<数字>r.png", (0, 0), "mod_assets/images/<角色名>/<图像资源>.png") 
         \end{lstlisting}
     \end{enumerate}
 
     \item 您添加的立绘是新定义的的角色：
     \begin{lstlisting}[numbers=none]
-image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<图像资源>.png") 
+image <角色名> <立绘编号> = im.Composite((960, 960), (0, 0), "mod_assets/images/<角色名>/<数字>l.png", (0, 0), "mod_assets/images/<角色名>/<数字>r.png", (0, 0), "mod_assets/images/<角色名>/<图像资源>.png") 
     \end{lstlisting}
 \end{enumerate}
 
@@ -163,6 +163,7 @@ image bg <背景名> = "mod_assets/images/bg/<背景图像资源名>.png"
         \item Ogg
         \item MP3
         \item WAV
+        \item FLAC
     \end{itemize}
 \end{Warning}
 
