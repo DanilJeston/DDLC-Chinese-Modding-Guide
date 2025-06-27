@@ -17,4 +17,5 @@ jobs:
         with:
           files: "DDLC Mod 开发指南.pdf"
           body_path: CHANGELOG-PRERELEASE.txt
+          tag_name: night-build
           prerelease: true
