@@ -18,4 +18,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: "DDLC Mod 开发指南.pdf"
-          body_path: CHANGELOG.txt
+          body_path: CHANGELOG.md
