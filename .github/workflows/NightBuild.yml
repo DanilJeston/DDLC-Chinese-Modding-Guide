@@ -1,9 +1,7 @@
 name: Release a pre-release version
 
 on:
-  push:
-    tags:
-      - "night-build"
+  push
 
 
 jobs:
