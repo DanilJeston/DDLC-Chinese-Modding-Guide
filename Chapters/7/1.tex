@@ -38,3 +38,23 @@
 然后，聚焦于“ONLY IN COMPARED FOLDER”栏目中，这里是您添加的文件，将它们全部复制到Future项目中的对应位置。
 
 到此，我们就完成了代码的迁移，接下来就是使用Ren'Py 8运行项目进行一轮完整的游戏，检测是否有代码运行结果在预期之外，并进行修复。
+
+\subsection{解除兼容性警告}
+初次运行项目，若您使用的Ren'Py版本高于8.0.3，您可能会遇到以下提示：
+
+\begin{quote}
+    \textbf{警告}：您目前用于开发 DDLC 模组的 Ren'Py SDK 未经过模组兼容性测试。
+
+    目前最新的适用于 DDLC 模组的 Ren'Py 8 版本为\url{https://www.renpy.org/release/8.0.3}“Ren'Py 8.0.3”。
+    
+    在过高版本的 Ren'Py 上运行 DDLC 或其模组可能会引发问题，也可能导致游戏功能损坏。
+\end{quote}
+
+这个提示将会在初次运行时出现，原则上当您按照本指南的打包教程，将config.developer设置为False，那么这个提示将不会被展示。但以防万一，我们仍建议您从根源上取消该提示。
+
+现在，关闭游戏，打开game/core/lockdown\_check.rpy文件，在label语句后添加一行，输入以下代码（注意缩进）：
+\begin{lstlisting}
+    return
+\end{lstlisting}
+
+再次打开游戏，您会发现这段提示永久消失了。

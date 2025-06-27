@@ -1,10 +1,9 @@
 \section{进入Ren'Py世界}
 在Ren'Py的世界里，剧本与视觉内容都围绕着代码展开。要编写脚本，我们就必须先学习Ren'Py的语法。
 \subsection{say语句}\label{subsec:3.2.1}
-say语句是一个十分重要的语法，它可以让视觉小说角色拥有对话的能力。不过不用担心，say
-语句的语法十分简单。
+say语句是一个十分重要的语法，它可以让视觉小说角色拥有对话的能力。不过不用担心，say语句的语法十分简单。
 
-还记得上一课我们打开的script-ch1.rpy吗？现在另起一行，按下 Tab 键(或打四个空格，不过Visual Studio Code会自动为我们将Tab转化为空格)，输入以下代码片段:
+还记得上一课我们打开的script-ch1.rpy吗？现在另起一行，打四个空格或按下 Tab 键(Visual Studio Code会自动为我们将Tab转化为空格)，输入以下代码片段:
 
 \begin{lstlisting}
     "快到学园祭了"
@@ -12,7 +11,7 @@ say语句是一个十分重要的语法，它可以让视觉小说角色拥有�
 \end{lstlisting}
 
 \begin{Warning}
-您必须使用英文引号来包住文字。另外，请务必注意缩进问题，错误的缩进将会导致代码运行失败。
+您必须使用\textbf{英文引号}来包住文字。另外，请务必注意\textbf{缩进问题}，错误的缩进将会导致代码运行失败。
 \end{Warning}
 
 这是一段非常简单的Ren'Py代码，它只包含文字，不显示任何图像或播放任何音效。现在，切换回Ren'Py SDK，点击启动项目，开始游戏，您应该会看到一行旁白以及莫妮卡的一行对话。
@@ -247,9 +246,10 @@ show语句也可以使用behind 从句、as从句、onlayer从句。但由于在
 
 \subparagraph{at、with从句}
 \label{subsubsec:3.2.2.1}
-当变换作为角色动画时，应使用at从句。一个关于变换的例子：t41。在这个变换中，t表示在这个位置上的角色静止站立在原地；4表示一共有4个站位，会将屏幕等分成4份；1表示从左往右该变换是所有站位中的第1个。
 
-所有角色状态有:
+变换（transform），就如名字一样，定义了一个图像在屏幕上的变化内容与方式，即动画、运动方式、位置、透明度等。当一个变换作用于角色立绘时，应使用at从句。一个例子：t41。在这个变换中，t表示在这个位置上的角色静止站立在原地；4表示一共有4个站位，会将屏幕等分成4份；1表示从左往右该变换是所有站位中的第1个。
+
+所有适用于角色立绘的变换有:
 
 \begin{center}
 \tablehead{
@@ -283,7 +283,6 @@ show语句也可以使用behind 从句、as从句、onlayer从句。但由于在
     \captionof{table}{角色状态表}
 \end{center}
 
-
 对于站位总数，共有1到4。
 
 当变换作为转场动画来使用时，应使用with从句。游戏中实现定义好的转场动画有：
@@ -302,7 +301,7 @@ show语句也可以使用behind 从句、as从句、onlayer从句。但由于在
         \hline
         dissolve\_cg & 适用于CG的溶解效果 \\
         \hline
-        dissolve\_scene & 适用于scene的溶解效果 \\
+        dissolve\_scene & 现将屏幕擦为黑色，然后显示下一场景 \\
         \hline
         dissolve\_scene\_full & 使屏幕自行溶解为黑色，显示另一个场景 \\
         \hline
@@ -322,7 +321,7 @@ show语句也可以使用behind 从句、as从句、onlayer从句。但由于在
 
 
 \subparagraph{zorder从句}
-对于zorder从句，zorder后的数字越大，图像在Z轴上的距离越远，即离屏幕越远，反之亦然。但由于DDLC的变换已经为我们设置好了图像的大小，所以zorder其实在后续版本不再需要。
+对于zorder从句，zorder后的数字越大，图像在Z轴上的距离越远，即离屏幕越远，反之亦然。但由于DDLC的内建变换已经为我们设置好了图像的大小与位置，所以zorder其实在后续版本不再需要。
 
 \paragraph{临时性变化与对话属性}
 在视觉小说中，每一次对话角色的神态、姿势可能都会发生变化，那我们岂不是要重复使用很多次show语句、hide语句？所以为了方便开发，Ren'Py给say语句添加了对话属性。
@@ -356,6 +355,8 @@ label ch0_start:
     n @2d "啊，我都等不及学园祭了。"
 \end{lstlisting}
 
+上述例子，在夏树说出“啊，我等不及学园祭了”这句话前与这句话后，都会展示1a这个立绘，而当说出这话时，则会变为2d这个立绘。
+
 \subsubsection{hide语句}
 
 hide语句有着与show语句相反的作用⸺从屏幕上隐藏一个图像。如:
@@ -366,7 +367,7 @@ hide monika
 
 则会将莫妮卡从当前屏幕上隐藏。
 
-hide语句同样可以使用附加参数，但只能使用with从句，使用方法与show语句的with从句相同，详细请见第\ref{subsubsec:3.2.2.1}课。
+hide语句同样可以使用附加参数，但只能使用with从句，使用方法与show语句的with从句相同，详细请见第\ref{subsubsec:3.2.2.1}小节。
 
 \begin{ExtraKnowledge}
     扩展知识：hide语句同样可以使用onlayer从句，用于隐藏对应图层上的图像。但在游戏中很少会涉及到对图层的操作，故本书不会对onlayer从句展开讲解。有兴趣者课前往 \url{https://doc.renpy.cn/zh-CN/displaying_images.html} 了解详细内容。
@@ -382,6 +383,7 @@ scene语句类似于show语句，但与show语句有一个很明显的差异⸺�
 # Chapter 0
 label ch0_start:
     scene bg club_day
+    with wipeleft_scene
     "{cps=20}快到{b}学园祭{/b}了。{/cps}{w=.5}{nw}"
     show monika 1a at l41 zorder 1
     m "各位！我们得开始准备了！"
