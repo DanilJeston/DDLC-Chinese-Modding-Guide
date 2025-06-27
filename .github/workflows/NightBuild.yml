@@ -18,5 +18,5 @@ jobs:
           files: "DDLC Mod 开发指南.pdf"
           body_path: CHANGELOG-PRERELEASE.md
           tag_name: night-build
-          overwrite_files: true
+          input_overwrite_files: true
           prerelease: true
