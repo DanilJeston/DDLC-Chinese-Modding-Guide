@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Get Newest PDF
-        run: wget https://raw.githubusercontent.com/DanilJeston/DDLC-Chinese-Modding-Guide/master/DDLC%20Mod%20%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.pdf -o "DDLC Chinese Modding Guide.pdf"
+        run: wget "https://github.com/DanilJeston/DDLC-Chinese-Modding-Guide/raw/master/DDLC Mod 开发指南.pdf" -o "DDLC Chinese Modding Guide.pdf"
       - name: Release
         uses: softprops/action-gh-release@v2
         if: github.ref_type == 'tag'
