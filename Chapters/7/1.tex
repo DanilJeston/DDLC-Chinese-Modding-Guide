@@ -1,0 +1,40 @@
+\section{判断您是否需要升级}
+首先，升级模板是一个很复杂的过程。尤其是将模板从Next分支（Python 2版本）升级到Future分支（Python 3）版本。一般来说，您的代码仅需较少的改动或完全不需改动便可迁移到Future分支。但由于Python 2与Python 3、Ren'Py 7与Ren'Py 8之间的差异较大，相同的代码在不同分支上运行可能会有不同的效果。为了判断您是否需要升级，本部分将会给您参考建议，帮助您判断是否需要升级。
+请按照以下步骤进行判断：
+\begin{enumerate}
+    \item 您是否需要或想要使用Ren'Py 8 或 Python 3 的一些新特性（如多线程操作、\ruby{格式化字符串}{f-string}、\ruby{关键词参数}{Keyword-Only Arguments}等）
+    \item 您是否有足够的技术修正代码预期外的运行效果
+    \item 您能否接受升级到Future分支所\textbf{可能}带来的游戏的不稳定
+\end{enumerate}
+若以上三个条件均满足，我们建议您升级到Future分支，否则我们不建议您升级。您也可以出于尝试目的升级您的项目，只要先进行备份。
+
+\section{更新Ren'Py版本与模板版本}
+在一切开始之前，请先对您现在的项目文件夹进行备份，只需将您的项目文件夹压缩成压缩包或复制一份即可。
+
+\begin{Warning}
+    截止到本章编写时，Ren'Py 7的支持即将结束，故我们建议您直接升级至Future分支与Ren'Py 8版本，而不是停留在Ren'Py 7。
+\end{Warning}
+
+\subsection{更新Ren'Py}
+更新 Ren'Py 版本是一个相对简单的步骤。首先，前往\url{https://www.renpy.org/latest.html}下载 Ren'Py 8 的最新版本。
+
+然后，按照第\ref{1.2}节完成对Ren'Py的配置。
+
+\subsection{更新模板}
+现在，前往\url{https://github.com/DokiMod/DDLCModTemplate-Chinese-future}，按照第\ref{2.1.1}节的步骤，下载Future分支并完成配置。
+
+接下来，我们将进入最复杂的一个环节——迁移修改过的代码。
+首先，打开VS Code，按照第\ref{2.1.2}节步骤安装Compare Folders插件。随后，使用VS Code打开您项目文件夹所处的文件。例如：我的项目名字叫作“ClubStory”，储存在名为“项目”的文件夹，那么我应该使用VS Code打开“项目”文件夹而非“ClubStory”文件夹。
+
+然后，按照第\ref{2.1.1}节的步骤，下载Next分支，放入您项目所在的文件夹中（按照上例，您应该放入“项目”文件夹而非“ClubStory”文件夹）。
+在VS Code中，单击选中Next分支文件夹，再按住Ctrl键（Windows、Linux）或Command键（macOS）选中您的项目，右键选择“[Compare Folders]Compare selected folders”。等待一段时间后，您应该看到如图所示的界面。在跳出的选项卡中，我们只需关注“DIFFERENCES”和“ONLY IN COMPARED FOLDER”两栏中的game文件夹。
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=.2]{Pictures/7.1.2.1.png}
+\end{figure}
+
+在VS Code的文件选项卡中，选择新建窗口，在新的窗口中打开Future分支。回到原来的窗口，聚焦于“DIFFERENCES”栏目中，展开game文件夹，依次点击每个文件夹下的文件，查看文件的差异，并将修改过的代码同步修改到Future分支的对应文件下。
+
+然后，聚焦于“ONLY IN COMPARED FOLDER”栏目中，这里是您添加的文件，将它们全部复制到Future项目中的对应位置。
+
+到此，我们就完成了代码的迁移，接下来就是使用Ren'Py 8运行项目进行一轮完整的游戏，检测是否有代码运行结果在预期之外，并进行修复。
