@@ -7,6 +7,10 @@ Completed Chapter 8.1 and Chapter 8.2.1 (Content: Customizing the GUI and Defini
 
 Add afterword again. I found it isn't meaningless and embarrassing.
 
+Fixed directory structure errors.
+
 完成第 8.1 章和第 8.2.1 章（内容：自定义GUI与定义新界面）
 
 再次添加后记。我发现这并非是毫无意义与令人尴尬的。
+
+修复了目录错误的结构。
