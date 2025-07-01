@@ -9,8 +9,12 @@ Add afterword again. I found it isn't meaningless and embarrassing.
 
 Fixed directory structure errors.
 
+Change code font size
+
 完成第 8.1 章和第 8.2.1 章（内容：自定义GUI与定义新界面）
 
 再次添加后记。我发现这并非是毫无意义与令人尴尬的。
 
 修复了目录错误的结构。
+
+修改代码字体的大小
