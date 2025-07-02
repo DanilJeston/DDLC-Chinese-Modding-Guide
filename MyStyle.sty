@@ -1,7 +1,7 @@
 \ProvidesPackage{MyStyle}
 
 % Import packages
-\RequirePackage{makeidx, bookmark, geometry, fancyhdr, tcolorbox, hyperref, graphicx, float, subfig, enumitem, caption, supertabular, tikz, fontspec, xparse}
+\RequirePackage{makeidx, bookmark, geometry, fancyhdr, tcolorbox, graphicx, float, subfig, enumitem, caption, supertabular, tikz, fontspec, xparse, hyperref}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage[fontset=none,scheme=chinese,heading=true]{ctex}
 \RequirePackage{ruby}
@@ -21,6 +21,8 @@
 
 \setlength{\headheight}{13pt}
 
+% Set url-cut
+\def\UrlBreaks{\do\/\do-}
 
 % Add additional fonts
 \setCJKfamilyfont{FZKaiTi}{方正楷体_GBK}[AutoFakeBold=2]

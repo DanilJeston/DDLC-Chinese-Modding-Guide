@@ -91,11 +91,13 @@ label ch0_start:
 
 \begin{ExtraKnowledge}
 player是一个记录了玩家名字的变量。不理解变量是什么？没关系，本书将在后面为您介绍变量的性质与作用。在这里，您只需要知道当需要提及玩家名字时使用player变量即可。
+\end{ExtraKnowledge}
 
+\begin{ExtraKnowledge}
 您或许也注意到了\{/cps\}和\{/b\}。这是对前面cps标签和bold标签的闭合，代表着其适用范围仅为自身标签与闭合标签内的所有文字。
 \end{ExtraKnowledge}
 
-不难发现，当需要使用变量时，我们只需要使用中括号将变量名括住。当我们需要将某段文字进行加粗等操作，可以对文字打上标签(既花括号)。若需要在对话中使用这些字符，则需要连续出现两次。如在代码中要出现花括号，则应该使用\{\{\}\}代替\{\}
+不难发现，当需要使用变量时，我们只需要使用中括号将变量名括住。当我们需要将某段文字进行加粗等操作，可以对文字打上标签(既花括号)。若需要在对话中使用这些字符，则需要连续出现两次。如在对话中要出现花括号，则应该使用\{\{\}\}代替\{\}
 
 以下为常用的文字标签：
 \begin{center}
@@ -214,8 +216,6 @@ bg <背景编号>
 \begin{ExtraKnowledge}
 通常我们不使用show来显示背景，而是使用scene。对于scene的详细介绍请看第\ref{subsubsec:3.2.2.3}课。
 \end{ExtraKnowledge}
-
-\newpage
 
 \paragraph{附加参数}
 
@@ -409,7 +409,7 @@ scene <图片编号> <with从句>
 
 with从句的使用方法与hide、show语句相同。详细请见\ref{subsubsec:3.2.2.1}。
 
-\subsection{play、stop、voice语句}
+\subsection{play、stop语句}
 现在，在我们的视觉小说中，图像有了，人物立绘与背景也有了，但还是缺了一些东西，比如音
 乐与音效。在接下来，我们将会进入对于play和stop语句的学习。
 
@@ -481,53 +481,6 @@ stop语句以关键词stop开头，后接想要停止播放的通道名。如：
     stop music fadeout 2
     stop sound
 \end{lstlisting}
-
-\subsubsection{voice语句}
-Ren'Py同样支持语音功能。要使用语音功能可以使用voice语句。
-
-读下列代码，尝试理解voice语句的用法：
-\begin{lstlisting}
-    voice 'hello.ogg'
-    m "你好！"
-
-    define voice.a = "happy_birthday.ogg"
-    voice voice.a
-    m "生日快乐！"
-\end{lstlisting}
-
-请注意，当用户进行互动行为时，语音将会被打断。使用sustain特性则可以保证语音完整播放不被打断。
-\begin{lstlisting}
-    voice 'arguing.ogg'
-    s "你不能这样做！！"
-
-    voice sustain
-    s "...小蛋糕是我的！！！！"
-\end{lstlisting}
-
-\paragraph{自动语音}
-Ren'Py同时还提供了自动语音功能，省去了麻烦的voice语句。
-
-要实现这个功能，语音文件名必须跟对话脚本标识号严格匹配。
-
-对话脚本标示名，需要将对话脚本导出为一个表格。操作如下：
-\begin{enumerate}
-    \item 在启动器上选择“Extract Dialogue”
-    \item “Tab-delimited Spreadsheet (dialogue.tab)”
-    \item “Continue”
-    \item 使用表格程序打开dialogue.tab。
-\end{enumerate}
-
-表格的第一列就是需要使用的标识号，其他列则是对话的更多别的信息。
-
-要自动播放语音，请将config.auto\_voice设置为一个包含\{id\}的字符串。当开始对话时，\{id\}会被对话脚本标识符替换，并自动组成一个音频文件名。若音频文件名对应的文件真实存在，则那个文件就会播放。
-
-\begin{lstlisting}
-    config.auto_voice = "mod_assets/voice/{id}.ogg"
-\end{lstlisting}
-
-对话标识号是ch1\_n\_end\_24e41fcf，那么当对应的对话显示时，Ren'Py会寻找文件mod\_asset
-
-s/voice/ch1\_n\_end\_24e41fcf.ogg。如果文件存在，Ren'Py会播放这个文件。
 
 \subsection{menu语句}
 在视觉小说中，往往会有很多选择。这些选择通常能够影响剧情的走向，进入不同的分支。在本节中，你将会学习menu语句的基本用法。

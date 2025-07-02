@@ -1,20 +1,10 @@
 **THIS IS A NIGHTLY BUILD VERSION, THE CONTENT MAY BE WRONG OR UNCOMPLETED**
 **这是一个每日构建版本，内容可能有误或者未完成。**
 
-2025/7/1
+2025/7/2
 
-Completed Chapter 8.1 and Chapter 8.2.1 (Content: Customizing the GUI and Defining New Interfaces)
+删除了语音部分。
 
-Add afterword again. I found it isn't meaningless and embarrassing.
+调整了指南结构，使其更符合初学者。
 
-Fixed directory structure errors.
-
-Change code font size
-
-完成第 8.1 章和第 8.2.1 章（内容：自定义GUI与定义新界面）
-
-再次添加后记。我发现这并非是毫无意义与令人尴尬的。
-
-修复了目录错误的结构。
-
-修改代码字体的大小
+在类与函数、Python数据类型部分增加了说明与举例使其更符合初学者。

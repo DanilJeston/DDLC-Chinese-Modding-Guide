@@ -115,11 +115,14 @@
         \hline
         /= & 将左侧值除以右侧值并将结果保存给左侧对象 & a /= 100\\
         \hline
+        \%= & 将左侧值取模右侧值并将结果保存给左侧对象 & c \%= a 等效于 c = c \% a\\
+        \hline
+        **=	& 幂赋值运算符 & c **= a 等效于 c = c ** a\\
+        \hline
+        //=	& 取整除赋值运算符 & c //= a 等效于 c = c // a\\
+        \hline
     \end{supertabular}
-    \captionof{table}{常见算数与赋值运算符与示意}
-    \label{table:4.1.2}
 \end{center}
-
 
 \subsection{列表与元组}
 
@@ -329,3 +332,48 @@ Python中的内置数据类型均可进行逻辑运算和比较。如：
     此处只对Python的一些常见类型做了简单的介绍。Python中还有其他类型，如可调用类（callable）等。本书目的以教学Ren'Py为主，故不会涉及Python过多。有兴趣者可以前往 \url{https://www.runoob.com/python3/python3-tutorial.html} 进行更深入的学习。
 \end{ExtraKnowledge}
 
+\subsection{小节}
+现在，让我们将上述所说的Python的内置数据类型运用到实际代码中。如下例：
+
+\begin{lstlisting}[caption=script-ch1.rpy]
+# Chapter 0
+label ch0_start:
+    python:
+        # aff - affection
+        n_aff = 0
+        m_aff = 0
+    scene bg club_day
+    "{cps=20}快到{b}学园祭{/b}了。{/cps}{w=.5}{nw}"
+    show monika 1a at l41 zorder 1
+    m "各位！我们得开始准备了！"
+    show sayori 1a at h42 zorder 1
+    s "好耶！！！！"
+    show natsuki 1a at t43 zorder 1
+    n 2d "啊，我都等不及学园祭了。"
+    n "肯定会很棒的！"
+    show yuri 1a at s44 zorder 1
+    y "..."
+    scene bg club_day
+    show monika 2a at t21 zorder 1
+    show sayori 2a at t22 zorder 1
+    m "那么，是时候来进行分工了。"
+    m 4k "[player],你想要做什么? "
+    menu:
+        "做小蛋糕":
+            s "夏树的小蛋糕最好吃了！"
+            python:
+                n_aff += 1
+                m_aff -= 1
+        "布置教室":
+            m "那我们可得抓紧时间了！"
+            python:
+                n_aff -= 1
+                m_aff += 1
+    return
+\end{lstlisting}
+
+上述代码中，我们现将n\_aff与m\_aff赋值为了0，并且随着玩家做出的选择，n\_aff与m\_aff会分别增加或减少一定的数值。
+
+\begin{ExtraKnowledge}
+    \$、python语句块都是在Ren'Py中运行Python代码的方式，将会在后续的章节中介绍。
+\end{ExtraKnowledge}
