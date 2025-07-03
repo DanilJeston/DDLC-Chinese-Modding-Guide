@@ -2,20 +2,21 @@
 流程控制控制了程序运行的步骤。流程控制包括顺序控制、条件控制和循环控制。顺序控制，顾名思义，就是按照代码的先后顺序，从上到下依次执行代码。
 
 \subsection{脚本标签}
-在Ren'Py中，我们可以使用label语句，用自定义的标签名声明一个程序点位。这些标签用于调用或者跳转，可以使用在Ren'Py脚本、python函数及各类界面中。
+在Ren'Py中，我们可以使用label语句，用自定义的标签名声明一个程序点位。这些标签用于调用或者跳转，可以使用在Ren'Py脚本、Python函数及各类界面中。
 
 \subsubsection{label 语句}
 在游戏中，故事常常会有多个走向，这是我们就需要编写多个分支。如果剧情只围绕一个分支来讲述故事，那么一定是很枯燥的。同时，如果我们把所有的代码都写在一个label里，无疑会对编写与后期的维护造成不必要的麻烦。这时候，就需要定义多个 label。
 
 label语句的基本语法为：
 \begin{lstlisting}
-label <标签名>(参数 1, 参数 2):
+label <标签名>(参数 1, 参数 2, ...):
     <语句 1>
     <语句 2>
     <语句 3>
     ...
 \end{lstlisting}
 
+当标签不接受参数时，可以省略小括号及里面的内容。
 如下例子：
 \begin{lstlisting}
 label ch0_end:
@@ -97,6 +98,8 @@ label ch0_start:
 
 call语句和jump语句可以将程序跳转到一个指定的脚本标签处。
 
+call与jump的区别在于，call语句相当于调用，在目标标签执行完毕后会回到当前标签。而jump相当于跳转，在目标标签执行完后将不会返回当前标签。
+
 call语句和jump语句的语法如下：
 \begin{lstlisting}
 call/jump <标签名>
@@ -105,7 +108,7 @@ call/jump <标签名>
 或者
 
 \begin{lstlisting}
-call/jump expression <label expressions>
+call/jump expression <label 表达式>
 \end{lstlisting}
 
 如下例：
@@ -147,8 +150,12 @@ if <表达式>:
     <语句 2>
 elif <表达式>:
     <语句 3>
-else:
+elif <表达式>:
     <语句 4>
+elif ...:
+    ...
+else:
+    <语句 5>
 \end{lstlisting}
 
 每一个if语句中的表达式都应当返回一个True或False（见表\ref{table:4.1.5}）。结果为True时，将会执行if语句块中的代码，如果结果为False，Python就会忽略if语句块内的所有代码。
@@ -156,7 +163,7 @@ else:
 \begin{ExtraKnowledge}
     表达式也可以是一个数字、一个字符串、或定义了\_\_bool\_\_魔术方法的对象。
 
-    不为0的数字、非空的字符串以及\_\_bool\_\_方法返回True的对象都会被视为True
+    不为0的数字、非空的字符串以及\_\_bool\_\_方法返回True的对象都会被视为True，而None、空字符串、0，当然还有False本身则会被视为False
 \end{ExtraKnowledge}
 
 如下例：
@@ -181,9 +188,9 @@ x is True.
 Math is still correct.
 \end{lstlisting}
 
-当有多个表达式需要同时进行判断或当表达式为False时需要执行一些代码，我们就可以使用elif和else语句。
+当表达式存在多个可能时，则可以使用elif语句。一个if语句中可以存在多个elif语句。如果想要在所有的if、elif语句都不成立时，额外执行一些代码，则可以使用else语句。
 
-当if语句中的表达式为False时，会执行else语句的内容。请注意，elif或else必须与if连用。如下例：
+当if语句中的表达式为False时，会先判断elif子句是否成立，成立则执行该子句下的代码，否则继续判断其他elif子句，直到运行到else子句。如果运行到else子句时，if和elif语句的表达式中没有成立的均为False，那么就会执行else语句的内容。请注意，elif或else必须与if连用。如下例：
 
 \begin{lstlisting}
 if 1 + 1 != 2:
@@ -230,7 +237,7 @@ while i < 10:
 \end{lstlisting}
 
 \begin{Warning}
-    请注意，一般表达式不为True，否则就会出现无限循环或死循环。如将上例中的i+= 1删去，就会导致while的表达式始终为True，程序卡死在while循环，导致无法运行下一个代码。在后文中我们将会介绍break和continue语句来打破或跳过循环。
+    请注意，一般表达式不为True，否则就会出现无限循环或死循环。如将上例中的i+= 1删去，就会导致i这个变量恒定为0，0又一定会小于10，那么该表达式就一定会返回True，使得程序卡死在while循环，无法运行下一个代码。在后文中我们将会介绍break和continue语句来打破或跳过循环。
 \end{Warning}
 
 \subsubsection{for循环\PyOnly }
@@ -268,7 +275,7 @@ Natsuki
 \end{lstlisting}
 
 \begin{ExtraKnowledge}
-    range函数是Python的内部函数之一，它可以为我们生成一个生成器（类似于列表，但比列表的性能更好）。使用range函数，我们可以快速生成一个从0开始到某数结束的一个生成器。当然，我们也可以指定range函数的起始数字与结束数字以及步长。如下例：
+    range函数是Python的内部函数之一，它可以为我们生成一个生成器（类似于列表，但比列表的性能更好）。使用range函数，我们可以快速生成一个从某数开始，按照一定规律排列到某数结束的一个生成器。如下例：
     \begin{lstlisting}
     for i in range(10):
         print(i)
@@ -303,16 +310,19 @@ Natsuki
     1
     \end{lstlisting}
 
-    上述第二个例子中的10就是起始数字，0则为截止数字，-1就是步长。
+    上述第二个例子中的10就是起始数字，0则为截止数字，-1就是步长。range会从10开始，依次加上-1，即减去1，直到运算结果为0时停止。（请注意，截止数字不会包含在range所生成的生成器中）
 \end{ExtraKnowledge}
 
 在部分情况中，我们希望可以跳过循环或退出循环体，这时我们就可以使用break和continue语句了。break可以立即退出循环体，如下例：
 
 \begin{lstlisting}
-for i in range(10):
+i = 0
+while i < 10:
     print(i)
+    i += 1
     if i > 5:
         break
+print("End")
 \end{lstlisting}
 
 输出结果为：
@@ -323,7 +333,10 @@ for i in range(10):
 3
 4
 5
+End
 \end{lstlisting}
+
+可以看到，在这个过程中i的值为0到5，虽然i<10此时依然成立，但由于while循环下编写了一个if判断，当i大于5时执行break语句，打破了循环，所以没有输出6、7、8、9
 
 continue可以跳过当前的循环，如下例：
 
@@ -347,6 +360,8 @@ for i in range(10):
 8
 9
 \end{lstlisting}
+
+可以看到输出结果中并没有5，这是由于for循环下的if语句判断当i等于5时，执行continue子句，continue子句会让后续代码被跳过，直接进入下一个循环，所以没有输出5。
 
 同时，在Python中，循环也可以使用else语句。在while语句中的else语句会在while表达式为False时被执行。如下例：
 

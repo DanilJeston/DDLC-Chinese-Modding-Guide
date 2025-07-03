@@ -51,7 +51,7 @@ label ch0_start:
 
 当出现多个Python语句块时，Ren'Py会根据先后顺序依次执行。同时，我们可以使用hide与in关键词来改变Python语句块的行为。
 
-hide关键词会使Python语句块在一个独立的环境（命名区）下运行，即不与其他Python语句块共用一个环境。在具有hide关键词的Python语句块中的所有变量将不会被保存。
+hide关键词会使Python语句块在一个独立的环境（类似于函数命名空间）下运行，即不与其他Python语句块共用一个环境。在具有hide关键词的Python语句块中的所有变量将不会被保存。
 
 in关键词则可以让Python语句块在一个独立的环境下运行。其他环境可以通过“储存区.变量”来使用其他环境的内容。
 
@@ -103,6 +103,10 @@ init -1 python:
     demo = True
 
 label ch0_start:
+    python:
+        # affection: 好感度
+        n_aff = 0
+        m_aff = 0
     scene bg club_day
     "{cps=20}快到{b}学园祭{/b}了。{/cps}{w=.5}{nw}"
     show monika 1a at l41 zorder 1
