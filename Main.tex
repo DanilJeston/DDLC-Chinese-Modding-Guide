@@ -1,0 +1,29 @@
+\documentclass[a4paper,openany]{book}
+\usepackage{MyStyle, CodeStyle, subfiles}
+
+\hypersetup{
+  pdftitle={DDLC Mod开发指南},
+  pdfkeywords={DDLC, Mod},
+  pdfcreator={PartyParrot},
+}
+
+\makeindex
+
+\begin{document}
+\subfile{Subfiles/Title.tex}
+\frontmatter
+\subfile{Subfiles/Preface.tex}
+\tableofcontents
+\listoftables
+\mainmatter
+\part{基础部分}
+\subfile{Subfiles/1/Chap1.tex}
+\subfile{Subfiles/2/Chap2.tex}
+\subfile{Subfiles/3/Chap3.tex}
+\subfile{Subfiles/4/Chap4.tex}
+\subfile{Subfiles/5/Chap5.tex}
+\subfile{Subfiles/6/Chap6.tex}
+\part{进阶部分}
+\subfile{Subfiles/7/Chap7.tex}
+\subfile{Subfiles/8/Chap8.tex}
+\end{document}

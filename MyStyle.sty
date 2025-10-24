@@ -1,19 +1,22 @@
 \ProvidesPackage{MyStyle}
 
 % Import packages
-\RequirePackage{makeidx, bookmark, geometry, fancyhdr, tcolorbox, graphicx, float, subfig, enumitem, caption, supertabular, tikz, fontspec, xparse, hyperref}
+\RequirePackage{makeidx, bookmark, geometry, fancyhdr, tcolorbox, graphicx, float, subfig, enumitem, caption, supertabular, tikz, fontspec, xparse, hyperref, graphicx}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage[fontset=none,scheme=chinese,heading=true]{ctex}
-\RequirePackage{ruby}
+\RequirePackage{ruby, wallpaper}
 
 % Set the style
 \geometry{a4paper,left=1.25in,right=1.25in,top=1in,bottom=1in}
 \renewcommand{\listtablename}{表格列表}
+\ctexset{
+	section/titleformat = \raggedright
+}
 
 % Set Default Fonts
-\setCJKmainfont{思源宋体}[ItalicFont=JiangChengXieSong]
-\setCJKsansfont{思源黑体}[ItalicFont=JiangChengXieHei]
-\setCJKmonofont{思源等宽}[BoldFont=思源等宽 Bold, ItalicFont=JiangChengXieHei]
+\setCJKmainfont{思源宋体}[ItalicFont=方正楷体_GBK]
+\setCJKsansfont{思源黑体}[ItalicFont=方正楷体_GBK]
+\setCJKmonofont{思源等宽}[BoldFont=思源等宽 Bold, ItalicFont=方正楷体_GBK]
 
 \setmainfont{Source Serif 4 Display}[ItalicFont=SourceSerif4Display-It]
 \setsansfont{Source Sans 3}[ItalicFont=SourceSans3-It]
@@ -22,7 +25,19 @@
 \setlength{\headheight}{13pt}
 
 % Set url-cut
-\def\UrlBreaks{\do\/\do-}
+\makeatletter
+\def\UrlAlphabet{%
+      \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+      \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+      \do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+      \do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+      \do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+      \do\Y\do\Z}
+\def\UrlDigits{\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0}
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\g@addto@macro{\UrlBreaks}{\UrlAlphabet}
+\g@addto@macro{\UrlBreaks}{\UrlDigits}
+\makeatother
 
 % Add additional fonts
 \setCJKfamilyfont{FZKaiTi}{方正楷体_GBK}[AutoFakeBold=2]
@@ -41,19 +56,6 @@
 % Set page style.
 \pagestyle{fancy}
 
-% Set colors
-\definecolor{CPPLight}  {HTML} {686868}
-\definecolor{CPPSteel}  {HTML} {888888}
-\definecolor{CPPDark}   {HTML} {262626}
-\definecolor{CPPBlue}   {HTML} {4172A3}
-\definecolor{CPPGreen}  {HTML} {487818}
-\definecolor{CPPBrown}  {HTML} {A07040}
-\definecolor{CPPRed}    {HTML} {AD4D3A}
-\definecolor{CPPViolet} {HTML} {7040A0}
-\definecolor{CPPGray}  {HTML} {B8B8B8}
-\definecolor{darkgreen}{RGB}{105, 190, 78}
-\definecolor{darkyellow}{RGB}{150, 150, 0}
-
 % Set the style of the list
 \setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
 \setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
@@ -66,6 +68,7 @@
 \newcommand{\UserInput}[1]{\textbf{\#输入：#1}}
 \newcommand{\Output}[1]{\textit{\#输出：#1}}
 \newcommand{\PyOnly}{\textbf{[Python Only]}}
+\newcommand{\version}{0.1.0-alpha}
 \newenvironment{ChapterGoals}{\textbf{本节目标包括：}}{}
 
 % Define the color box

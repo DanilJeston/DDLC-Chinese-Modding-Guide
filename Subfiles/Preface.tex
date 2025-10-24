@@ -1,0 +1,112 @@
+\documentclass[../Main.tex]{subfiles}
+\begin{document}
+\chapter*{前言}
+Ren'Py是一款开放源代码的自由软件引擎，用来创作透过电脑叙述故事的视觉小说。Ren'Py之名是Ren'ai与Python两词混合而成。Ren'ai为日文，意指“恋爱”，而Python是Ren'Py所使用的语言环境。
+
+{\itshape 《心跳!心跳!文学部!》（Doki Doki Literature Club!}，下文简称DDLC）是一款基于Ren'Py编写的游戏。因此，要编写DDLC的 Mod 就必须学习 Ren'Py。
+
+由于Ren'Py与Python密不可分，本书在介绍Ren'Py特性的同时，还讨论了基本Python用法，使二者称为有机的整体。书中介绍了Ren'Py的基本概念，通过简单明了的例子向读者展示Ren'Py的代码与知识。
+
+本书共两部分，分为基础部分与进阶部分，分别介绍了Ren'Py的对话系统、图像显示系统等内容。
+
+本书针对Ren'Py的初学者，从Ren'Py基础知识开始介绍，并在教学过程中会介绍部分Python知识，因此不要求读者有Ren'Py和Python的基础知识，本书中部分内容对于部分读者可能会需要一点的基础的计算机知识，请善用百度。
+
+
+\subsubsection*{初级教程方法}
+在{\itshape C++ Primer Plus}的前言中，有这么一段话：
+\begin{quotation}
+    大约20年前，{\itshape C Primer Plus}开创了优良的初级教学传统，本书建立在这样的基础之上，吸收了其中很多成功的理念。
+    \begin{itemize}
+        \item 初级教程应当是友好的、便于使用的指南。
+        \item 初级教程不要求您已经熟悉相关的编程概念。
+        \item 初级教程强调的是动手学习，通过简短、容易输入的实例阐述一两个概念。
+        \item 初级教程用示意图来解释概念。
+        \item 初级教程提供问题和联系来检验您对知识的理解，从而适于自学。
+    \end{itemize}
+    ...
+
+    本书的作者和编辑尽最大的努力使本书简单、明了、生动有趣。我们的目标是，您阅读完本书后，能够编写出可靠、高效的程序，并且觉得这是一种享受。
+\end{quotation}
+本书秉持着与{\itshape C++ Primer Plus}, {\itshape C Primer Plus}同样的理念，通过简单明了的例子、逻辑连贯的项目式的代码与课后习题来使读者理解、明白Ren'Py的代码与特性。
+
+\subsubsection*{课后练习}
+本指南在教授 Ren'Py 知识的同时也会提供课后练习，旨在帮助读者巩固所学知识。课后习题将会单独成册，读者可以在本项目的主页下载课后习题。
+
+\subsubsection*{示例代码}
+本书包含大量的示例代码，其中大部分代码是一段完整的、可独立运行的代码。由于 Ren'Py 的特殊性，大部分代码需要放在相应环境中才能运行。本书代码只适用于 Ren'Py 7/8，理论上可以在 Ren'Py 6 上运行，但由于其过时性，本书将不再针对 Ren'Py 6 进行介绍与适配。
+
+\subsubsection*{本书示例代码及注释样式}
+为区别普通文本，本书对于实例代码做出以下规定:
+\begin{itemize}
+    \item 代码英文使用 Hack 字体，中文使用思源等宽字体，字号为 14 点。背景为RBG颜色（235， 235， 235）。如：
+    \begin{lstlisting}[numbers=none]
+# 这是一行注释
+    \end{lstlisting}
+
+    \item 需要您输入的内容将以粗体出现。如:
+    \begin{lstlisting}
+$ renpy.input()
+%\UserInput{22}%
+    \end{lstlisting}
+
+    \item 表示代码输出结果的将以斜体出现。如：
+    \begin{lstlisting}
+>>> 1 + 2
+%\Output{3}%
+    \end{lstlisting}
+
+    \item 语法中的占位符将用尖括号括起来。您应使用实际的参数、变量等替换占位符。如:
+    \begin{lstlisting}[numbers=none]
+define <变量名称> = <值:整型、浮点型等>
+    \end{lstlisting}
+    您应将其替换类似的例子:
+    \begin{lstlisting}[numbers=none]
+define a = 2
+    \end{lstlisting}
+
+    \item 当代码中不含有>>>或...则表示您应该使用文件运行代码，而非Python交互模式。
+
+    \item 本书中只能在Python代码块中运行的语法，将会含有\PyOnly 标签。如下例：
+
+
+    for循环 \PyOnly
+    
+    try-except \PyOnly
+
+
+    同时，本书分为4种注释类型:
+    \item 普通注释背景使用25\%色调青色，边框使用75\%青色，如:
+    \begin{Comment}
+这是一行注释。
+    \end{Comment}
+    \item 扩展知识背景使用25\%色调绿色，边框使用RGB颜色（105, 190, 78）如:
+    \begin{ExtraKnowledge}
+    这是一行扩展知识。
+    \end{ExtraKnowledge}
+    \item 警告背景使用25\%色调黄色，边框使用RGB颜色（150, 150, 0）如:
+    \begin{Warning}
+    这是一行警告。
+    \end{Warning}
+    \item 必须注意的内容背景使用25\%色调红色，边框使用75\%红色，如:
+    \begin{Attention}
+    您必须注意此内容。
+    \end{Attention}
+\end{itemize}
+
+\subsubsection*{开发本书编程示例所使用的系统}
+本书的Ren'Py示例是使用Ren'Py SDK 7.6.1开发的，在Ren'Py SDK 7.8.1、Ren'Py8.0.3、Ren'Py 8.3.7上进行过测试，同时代码在Arch Linux、Windows 11 24H2 64 bit上的进行了测试。
+
+\subsubsection*{获取最新版指南}
+\url{https://wwyc.lanzouq.com/b02fb2saj}
+
+密码 :ddlc
+
+\url{https://github.com/DanilJeston/DDLC-Chinese-Modding-Guide}
+
+\subsubsection*{联系方式}
+我们的联系邮箱是: \url{team_ninety@outlook.com}。
+\newline\newline\par
+如果您对本书有任何疑问或建议,请发邮件给我们。若您有兴趣参与本书的编写、完善,可以邮件给我们。同时,若您发现有人未经 CC BY-NC-SA 4.0 方式分发本书,请发邮件给我们。若本书存在部分代码出现错误、无法运行等,请发送邮件给我们。
+
+最后,祝您学习愉快!
+\end{document}
