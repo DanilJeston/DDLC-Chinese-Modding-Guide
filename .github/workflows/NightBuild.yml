@@ -11,9 +11,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Get Newest PDF
-        run: wget "https://github.com/DanilJeston/DDLC-Chinese-Modding-Guide/raw/master/Main.pdf"
+        run: wget "https://github.com/DanilJeston/DDLC-Chinese-Modding-Guide/raw/master/Main.pdf" -O "Main,pdf"
       - name: Get Newest Exercise Book PDF
-        run: wget "https://github.com/DanilJeston/DDLC-Chinese-Modding-Guide/raw/master/Exercises.pdf"
+        run: wget "https://github.com/DanilJeston/DDLC-Chinese-Modding-Guide/raw/master/Exercises.pdf" -O "Exercises.pdf"
       - name: Delete old release
         env:
           GH_TOKEN: ${{ github.token }}
